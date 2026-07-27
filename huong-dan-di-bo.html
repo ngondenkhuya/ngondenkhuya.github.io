@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hầu Hết Chúng Ta Đi Bộ Sai Cách Mà Không Biết — Hướng Dẫn Đầy Đủ</title>
+<meta name="description" content="7.000 bước/ngày, 3 thời điểm vàng, kỹ thuật Japanese Walking và 7 sai lầm khi đi bộ ai cũng mắc — tổng hợp từ Harvard Health, Mayo Clinic, WHO và các nghiên cứu y khoa uy tín.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hầu Hết Chúng Ta Đi Bộ Sai Cách Mà Không Biết — Hướng Dẫn Đầy Đủ">
+<meta property="og:description" content="7.000 bước/ngày, 3 thời điểm vàng, kỹ thuật Japanese Walking và 7 sai lầm khi đi bộ ai cũng mắc — tổng hợp từ Harvard Health, Mayo Clinic, WHO.">
+<meta property="og:image" content="REPLACE_WITH_HOSTED_IMAGE_URL/og-image-di-bo.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --night: #0D1B2A;
+  --night-mid: #142133;
+  --night-card: #1A2B3E;
+  --night-border: #1F3347;
+  --green: #4ADE80;
+  --green-dim: #22c55e22;
+  --green-glow: #4ADE8033;
+  --red: #F87171;
+  --red-dim: #f8717122;
+  --cream: #F0EDE8;
+  --muted: #8B9EB7;
+  --muted2: #5A7391;
+  --white: #ffffff;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--night);
+  color: var(--cream);
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* ── TOP BAR (credit) ── */
+.top-bar {
+  background: var(--night-mid);
+  border-bottom: 1px solid var(--night-border);
+  padding: 9px 24px;
+}
+.top-bar-inner {
+  max-width: 880px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.top-bar-credit {
+  font-size: .72rem;
+  color: var(--muted2);
+  letter-spacing: .02em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.top-bar-credit strong { color: var(--muted); font-weight: 600; }
+.top-bar-dot {
+  width: 3px; height: 3px;
+  border-radius: 50%;
+  background: var(--green);
+  opacity: .7;
+  flex-shrink: 0;
+}
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 80px 24px 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 90%, #4ADE8014 0%, transparent 65%),
+    radial-gradient(ellipse 40% 30% at 15% 15%, #1a4a6e1a 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.hero-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 24px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.hero-eyebrow::before, .hero-eyebrow::after {
+  content: '';
+  height: 1px;
+  width: 28px;
+  background: linear-gradient(to var(--dir, right), var(--green), transparent);
+}
+.hero-eyebrow::after { --dir: left; }
+
+.hero-hook {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.4rem, 6.5vw, 5rem);
+  font-weight: 900;
+  line-height: 1.05;
+  color: var(--white);
+  margin-bottom: 16px;
+}
+
+.hero-hook em {
+  font-style: normal;
+  color: var(--green);
+}
+
+.hero-hook .strike {
+  position: relative;
+  color: var(--muted2);
+}
+.hero-hook .strike::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  top: 50%;
+  height: 3px;
+  background: var(--red);
+  transform: rotate(-2deg);
+}
+
+.hero-sub {
+  font-size: clamp(1rem, 2.5vw, 1.15rem);
+  color: var(--muted);
+  max-width: 500px;
+  margin: 16px auto 40px;
+  font-weight: 300;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-top: 28px;
+  border-top: 1px solid var(--night-border);
+  margin-top: 4px;
+}
+
+.stat { text-align: center; position: relative; padding: 0 4px; }
+.stat:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: -20px; top: 4px; bottom: 4px;
+  width: 1px;
+  background: var(--night-border);
+}
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--green);
+  display: block;
+  line-height: 1;
+}
+.stat-label { font-size: 11px; color: var(--muted); margin-top: 6px; max-width: 120px; margin-inline: auto; }
+
+.hero-note {
+  margin-top: 28px;
+  font-size: 0.8rem;
+  color: var(--muted2);
+  background: var(--night-card);
+  border: 1px solid var(--night-border);
+  border-radius: 999px;
+  padding: 9px 22px;
+  display: inline-block;
+  box-shadow: 0 0 24px #4ADE8014;
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: var(--muted2);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  animation: bob 2.2s ease-in-out infinite;
+}
+.scroll-hint::after {
+  content: '';
+  width: 1px;
+  height: 28px;
+  background: linear-gradient(to bottom, var(--muted2), transparent);
+}
+@keyframes bob {
+  0%,100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(7px); }
+}
+
+/* ── SECTION WRAPPER ── */
+section { max-width: 880px; margin: 0 auto; padding: 80px 24px; }
+
+.section-label {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 14px;
+  font-weight: 600;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.7rem, 4vw, 2.7rem);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.15;
+  margin-bottom: 12px;
+}
+
+.section-desc {
+  color: var(--muted);
+  font-size: 0.9rem;
+  max-width: 560px;
+  margin-bottom: 36px;
+}
+
+/* ── DIVIDER ── */
+.divider { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+.divider hr { border: none; border-top: 1px solid var(--night-border); }
+
+/* ── MISTAKES ── */
+.mistakes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+}
+
+.mistake-card {
+  background: var(--night-card);
+  border: 1px solid var(--red-dim);
+  border-left: 3px solid var(--red);
+  border-radius: 14px;
+  padding: 22px 20px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity .5s ease, transform .5s ease, border-color .3s;
+}
+.mistake-card.visible { opacity: 1; transform: translateY(0); }
+.mistake-card:hover { border-color: var(--red); box-shadow: 0 0 18px #f8717118; }
+
+.mistake-icon { font-size: 1.5rem; flex-shrink: 0; margin-top: 2px; }
+.mistake-title { font-weight: 600; color: var(--white); font-size: .9rem; margin-bottom: 4px; }
+.mistake-desc { font-size: .82rem; color: var(--muted); line-height: 1.55; }
+
+/* ── POSTURE SVG SECTION ── */
+.posture-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+@media (max-width: 640px) {
+  .posture-layout { grid-template-columns: 1fr; }
+  .posture-svg-wrap { order: -1; }
+}
+
+.posture-svg-wrap {
+  display: flex;
+  justify-content: center;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.posture-svg-wrap.visible { opacity: 1; transform: translateX(0); }
+
+.posture-list { display: flex; flex-direction: column; gap: 14px; }
+
+.posture-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 18px 20px;
+  background: var(--night-card);
+  border: 1px solid var(--night-border);
+  border-radius: 12px;
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity .5s ease, transform .5s ease, border-color .3s;
+}
+.posture-item.visible { opacity: 1; transform: translateX(0); }
+.posture-item:hover { border-color: var(--green); }
+
+.p-icon { font-size: 1.3rem; flex-shrink: 0; }
+.p-title { font-weight: 600; color: var(--white); font-size: .88rem; margin-bottom: 3px; }
+.p-desc { font-size: .8rem; color: var(--muted); line-height: 1.55; }
+
+/* ── SELF-CHECK 30s ── */
+.selfcheck {
+  margin-top: 28px;
+  background: var(--night-card);
+  border: 1px solid var(--night-border);
+  border-radius: 14px;
+  padding: 20px 22px;
+}
+.selfcheck-head {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; flex-wrap: wrap;
+}
+.selfcheck-title { font-weight: 600; color: var(--white); font-size: .9rem; }
+.selfcheck-btn {
+  background: var(--green); color: var(--night);
+  border: none; border-radius: 999px;
+  padding: 8px 18px; font-size: .8rem; font-weight: 700;
+  cursor: pointer; transition: opacity .2s, transform .2s;
+}
+.selfcheck-btn:hover:not(:disabled) { transform: scale(1.04); }
+.selfcheck-btn:disabled { opacity: .5; cursor: default; }
+.selfcheck-track {
+  height: 4px; background: var(--night-border);
+  border-radius: 99px; margin-top: 16px; overflow: hidden;
+}
+.selfcheck-progress { height: 100%; width: 0%; background: var(--green); }
+.selfcheck-label { margin-top: 12px; font-size: .82rem; color: var(--muted); min-height: 20px; }
+
+.posture-item.active-check {
+  border-color: var(--green);
+  box-shadow: 0 0 22px var(--green-glow);
+  background: #112a1c;
+}
+
+/* ── TIMELINE ── */
+.timeline { position: relative; margin-top: 40px; }
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 82px;
+  top: 0; bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--night-border) 10%, var(--night-border) 90%, transparent);
+}
+
+.tl-item {
+  display: flex;
+  gap: 28px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateX(-16px);
+  transition: opacity .5s ease, transform .5s ease;
+}
+.tl-item.visible { opacity: 1; transform: translateX(0); }
+
+.tl-time {
+  width: 82px;
+  flex-shrink: 0;
+  text-align: right;
+  font-family: 'Playfair Display', serif;
+  font-size: .95rem;
+  font-weight: 700;
+  color: var(--muted2);
+  padding-top: 20px;
+  line-height: 1.2;
+  transition: color .3s;
+}
+
+.tl-dot {
+  flex-shrink: 0;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--night-border);
+  border: 2px solid var(--muted2);
+  margin-top: 24px;
+  margin-left: -6px;
+  transition: all .3s;
+  position: relative; z-index: 1;
+}
+
+.tl-body {
+  flex: 1;
+  background: var(--night-card);
+  border: 1px solid var(--night-border);
+  border-radius: 14px;
+  padding: 18px 22px;
+  transition: all .3s;
+}
+
+.tl-item:hover .tl-time, .tl-item.active .tl-time { color: var(--green); }
+.tl-item:hover .tl-dot, .tl-item.active .tl-dot {
+  background: var(--green);
+  border-color: var(--green);
+  box-shadow: 0 0 12px var(--green-glow);
+  transform: scale(1.3);
+}
+.tl-item:hover .tl-body, .tl-item.active .tl-body {
+  border-color: var(--green);
+  box-shadow: 0 0 22px var(--green-glow);
+}
+.tl-item.active .tl-body { background: #112a1c; }
+
+.tl-head { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+.tl-badge {
+  font-size: 9px; letter-spacing: .12em; text-transform: uppercase;
+  background: var(--green-dim); color: var(--green);
+  padding: 3px 10px; border-radius: 20px; font-weight: 600;
+}
+.tl-badge.red { background: var(--red-dim); color: var(--red); }
+.tl-title { font-weight: 600; color: var(--white); font-size: .95rem; }
+
+.tl-detail {
+  font-size: .845rem;
+  color: var(--muted);
+  line-height: 1.65;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .4s ease, margin-top .3s;
+}
+.tl-item.active .tl-detail { max-height: 220px; margin-top: 10px; }
+
+.tl-source {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: .75rem;
+  color: var(--muted2);
+  background: var(--night-mid);
+  border-radius: 6px;
+  padding: 2px 10px;
+}
+
+/* ── JAPANESE WALKING ── */
+.method-wrap {
+  background: var(--night-card);
+  border: 1px solid var(--night-border);
+  border-radius: 20px;
+  padding: 40px;
+  margin-top: 32px;
+  position: relative;
+  overflow: hidden;
+  opacity: 0; transform: translateY(20px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.method-wrap.visible { opacity: 1; transform: translateY(0); }
+.method-wrap::before {
+  content: '';
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 240px; height: 240px;
+  background: radial-gradient(circle, var(--green-dim) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.who-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 28px;
+}
+@media (max-width: 520px) { .who-grid { grid-template-columns: 1fr; } }
+
+.who-box {
+  border-radius: 12px;
+  padding: 18px 20px;
+  font-size: .85rem;
+  line-height: 1.6;
+}
+.who-box.yes { background: #112a1c; border: 1px solid #22c55e33; }
+.who-box.no  { background: #2a1111; border: 1px solid #f8717133; }
+.who-box .who-label {
+  font-weight: 600;
+  margin-bottom: 8px;
+  font-size: .8rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.who-box.yes .who-label { color: var(--green); }
+.who-box.no  .who-label { color: var(--red); }
+.who-box li { margin-left: 14px; color: var(--muted); margin-bottom: 4px; }
+
+.interval-track {
+  display: flex;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 28px 0 8px;
+  height: 54px;
+}
+.iv-fast {
+  flex: 3;
+  background: var(--green);
+  display: flex; align-items: center; justify-content: center;
+  font-size: .8rem; font-weight: 700; color: var(--night);
+  letter-spacing: .05em; gap: 6px;
+}
+.iv-slow {
+  flex: 3;
+  background: var(--night-border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: .8rem; font-weight: 500; color: var(--muted);
+  letter-spacing: .05em; gap: 6px;
+}
+.interval-note {
+  text-align: center;
+  font-size: .78rem;
+  color: var(--muted2);
+  margin-bottom: 24px;
+}
+
+.method-meta {
+  display: flex; gap: 28px; flex-wrap: wrap;
+  padding-top: 24px;
+  border-top: 1px solid var(--night-border);
+}
+.meta-val {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem; font-weight: 700; color: var(--green);
+  display: block; line-height: 1;
+}
+.meta-desc { font-size: .78rem; color: var(--muted); margin-top: 4px; }
+
+.check-hint {
+  margin-top: 20px;
+  font-size: .82rem;
+  color: var(--muted2);
+  background: var(--night-mid);
+  border-radius: 8px;
+  padding: 10px 16px;
+  border-left: 3px solid var(--green);
+}
+
+/* ── 5 TIPS ── */
+.tips-list { display: flex; flex-direction: column; gap: 12px; margin-top: 32px; }
+
+.tip {
+  display: flex; align-items: flex-start; gap: 18px;
+  padding: 20px 22px;
+  background: var(--night-card);
+  border: 1px solid var(--night-border);
+  border-radius: 14px;
+  opacity: 0; transform: translateX(-16px);
+  transition: opacity .5s ease, transform .5s ease, border-color .3s;
+}
+.tip.visible { opacity: 1; transform: translateX(0); }
+.tip:hover { border-color: var(--muted2); }
+
+.tip-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem; font-weight: 700;
+  color: var(--night-border);
+  flex-shrink: 0; line-height: 1; min-width: 28px;
+  transition: color .3s;
+}
+.tip:hover .tip-num { color: var(--green); }
+.tip-title { font-weight: 600; color: var(--white); font-size: .92rem; margin-bottom: 4px; }
+.tip-desc { font-size: .835rem; color: var(--muted); line-height: 1.6; }
+
+.tip-link {
+  display: inline-block;
+  margin-top: 6px;
+  color: var(--green);
+  text-decoration: none;
+  font-size: .8rem;
+  font-weight: 600;
+  border-bottom: 1px dashed transparent;
+  transition: border-color .2s;
+}
+.tip-link:hover { border-color: var(--green); }
+
+/* ── THIỀN HÀNH ── */
+.med-wrap {
+  background: var(--night-card);
+  border: 1px solid var(--night-border);
+  border-radius: 20px;
+  padding: 52px 40px;
+  margin-top: 32px;
+  text-align: center;
+  opacity: 0; transform: translateY(20px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.med-wrap.visible { opacity: 1; transform: translateY(0); }
+
+.med-poem {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: var(--muted);
+  max-width: 460px;
+  margin: 0 auto 22px;
+}
+.med-poem:first-child { color: var(--cream); font-size: 1.2rem; }
+.med-poem:last-of-type { margin-bottom: 0; }
+.med-question { color: var(--green); font-style: normal; }
+
+.med-signoff {
+  margin-top: 32px;
+  font-size: .78rem;
+  letter-spacing: .06em;
+  color: var(--green);
+}
+
+/* ── CTA ── */
+.cta-block {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
+}
+
+.cta-inner {
+  background: linear-gradient(135deg, #112a1c 0%, #0f2235 100%);
+  border: 1px solid #22c55e44;
+  border-radius: 24px;
+  padding: 48px 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  opacity: 0; transform: translateY(24px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.cta-inner.visible { opacity: 1; transform: translateY(0); }
+.cta-inner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 60% at 50% 110%, #4ADE8018 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.cta-label {
+  font-size: 10px; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--green); font-weight: 600; margin-bottom: 16px;
+}
+.cta-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  font-weight: 700; color: var(--white);
+  margin-bottom: 32px;
+}
+
+.cta-checklist {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  text-align: left;
+  margin-bottom: 32px;
+}
+
+.cta-item {
+  display: flex; gap: 12px; align-items: flex-start;
+  background: #ffffff08;
+  border: 1px solid #ffffff10;
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+
+.cta-check {
+  width: 22px; height: 22px;
+  border-radius: 6px;
+  background: var(--green);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  font-size: .75rem; color: var(--night); font-weight: 700;
+}
+
+.cta-text { font-size: .88rem; color: var(--cream); line-height: 1.4; }
+.cta-text small { display: block; color: var(--muted); font-size: .75rem; margin-top: 2px; }
+
+.remind-wrap { margin-bottom: 28px; }
+.remind-btn {
+  background: transparent;
+  border: 1px solid var(--green);
+  color: var(--green);
+  border-radius: 999px;
+  padding: 10px 22px;
+  font-size: .85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .2s, color .2s, transform .2s;
+}
+.remind-btn:hover:not(:disabled) { background: var(--green); color: var(--night); transform: scale(1.03); }
+.remind-btn:disabled { opacity: .6; cursor: default; }
+.remind-note { margin-top: 10px; font-size: .72rem; color: var(--muted2); max-width: 340px; margin-inline: auto; }
+
+.cta-quote {
+  font-style: italic;
+  color: var(--muted);
+  font-size: .88rem;
+  max-width: 400px;
+  margin: 0 auto;
+}
+.cta-quote strong { color: var(--green); font-style: normal; }
+
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  padding: 48px 24px;
+  border-top: 1px solid var(--night-border);
+  font-size: .78rem;
+  color: var(--muted2);
+  letter-spacing: .04em;
+  line-height: 1.8;
+}
+footer a { color: var(--muted); text-decoration: none; }
+footer a:hover { color: var(--green); }
+footer strong { color: var(--muted); }
+
+/* ── REVEAL UTILITY ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     TOP BAR — Credit & Feedback
+══════════════════════════════════════════ -->
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <div class="top-bar-credit">
+      <span>Tổng hợp &amp; biên soạn bởi <strong>Bố của Dừa &amp; Mixue</strong></span>
+      <span class="top-bar-dot"></span>
+      <span>Mùa hè 2026</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     HERO — Hook mạnh
+══════════════════════════════════════════ -->
+<div class="hero">
+  <p class="hero-eyebrow">Sức khoẻ · Vận động · Đi bộ đúng cách</p>
+  <h1 class="hero-hook">
+    Hầu hết<br>chúng ta<br>đi bộ <em>sai cách</em><br>mà không biết
+  </h1>
+  <p class="hero-sub">Đây là những gì khoa học thực sự nói về cách đi bộ hiệu quả.</p>
+
+  <div class="hero-stats">
+    <div class="stat">
+      <span class="stat-num">7.000</span>
+      <div class="stat-label">bước/ngày ≈ 50–60 phút đi bộ</div>
+    </div>
+    <div class="stat">
+      <span class="stat-num">150'</span>
+      <div class="stat-label">hoạt động vừa–mạnh/tuần — khuyến nghị WHO</div>
+    </div>
+    <div class="stat">
+      <span class="stat-num">4 tuần</span>
+      <div class="stat-label">Japanese Walking cho kết quả rõ rệt</div>
+    </div>
+  </div>
+
+  <div class="hero-note">📚 Tổng hợp từ Harvard Health · Mayo Clinic · Stanford Lifestyle Medicine · WHO</div>
+  <div class="scroll-hint">Cuộn xuống</div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     MISTAKES — Sai lầm phổ biến
+══════════════════════════════════════════ -->
+<section id="mistakes">
+  <p class="section-label">Nhận diện sai lầm</p>
+  <h2 class="section-title">7 sai lầm khi đi bộ<br>ai cũng mắc phải</h2>
+  <p class="section-desc">Đây không phải lý thuyết — đây là những gì bác sĩ chỉnh hình và chuyên gia thể thao thấy hàng ngày ở phòng khám.</p>
+
+  <div class="mistakes-grid">
+    <div class="mistake-card">
+      <div class="mistake-icon">❌</div>
+      <div>
+        <div class="mistake-title">Bước quá dài</div>
+        <p class="mistake-desc">Bước dài tạo lực chấn động lớn hơn đáng kể lên khớp gối và hông so với bước ngắn. Ngắn và nhanh hơn mới đúng.</p>
+      </div>
+    </div>
+    <div class="mistake-card">
+      <div class="mistake-icon">❌</div>
+      <div>
+        <div class="mistake-title">Đi cúi đầu nhìn điện thoại</div>
+        <p class="mistake-desc">Gây áp lực đáng kể lên đốt sống cổ — càng cúi sâu, tải lên cổ càng tăng mạnh. Cổ, vai và lưng đều bị ảnh hưởng lâu dài.</p>
+      </div>
+    </div>
+    <div class="mistake-card">
+      <div class="mistake-icon">❌</div>
+      <div>
+        <div class="mistake-title">Đi ngay sau khi ăn no</div>
+        <p class="mistake-desc">Cần chờ ít nhất 20–30 phút sau ăn. Đi bộ ngay gây khó tiêu và có thể làm tụt đường huyết đột ngột.</p>
+      </div>
+    </div>
+    <div class="mistake-card">
+      <div class="mistake-icon">❌</div>
+      <div>
+        <div class="mistake-title">Không khởi động</div>
+        <p class="mistake-desc">Cơ và gân càng lớn tuổi càng kém đàn hồi. Bỏ qua 2–3 phút đi chậm ban đầu là nguyên nhân số 1 gây chấn thương.</p>
+      </div>
+    </div>
+    <div class="mistake-card">
+      <div class="mistake-icon">❌</div>
+      <div>
+        <div class="mistake-title">Đi dép lê / dép đế mềm</div>
+        <p class="mistake-desc">Ngón chân phải bám liên tục, bàn chân không được nâng đỡ. Dẫn đến viêm cân gan bàn chân và đau mắt cá theo thời gian.</p>
+      </div>
+    </div>
+    <div class="mistake-card">
+      <div class="mistake-icon">❌</div>
+      <div>
+        <div class="mistake-title">Tốc độ đều đều mãi một mức</div>
+        <p class="mistake-desc">Cùng tốc độ suốt buổi giúp tim ít phải thích nghi. Xen kẽ nhanh–chậm mới kích hoạt cải thiện tim mạch thật sự.</p>
+      </div>
+    </div>
+    <div class="mistake-card">
+      <div class="mistake-icon">❌</div>
+      <div>
+        <div class="mistake-title">Gù vai, tay không đánh nhịp</div>
+        <p class="mistake-desc">Tay đánh nhịp giúp cân bằng và hỗ trợ lực đẩy tiến hiệu quả hơn. Gù vai thu hẹp dung tích phổi và gây mỏi lưng nhanh hơn.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><hr></div>
+
+<!-- ══════════════════════════════════════════
+     POSTURE — Tư thế đúng với SVG
+══════════════════════════════════════════ -->
+<section id="posture">
+  <p class="section-label">Kỹ thuật chuẩn</p>
+  <h2 class="section-title">Tư thế đi bộ đúng<br>từ đỉnh đầu đến gót chân</h2>
+
+  <div class="posture-layout">
+    <!-- SVG figure -->
+    <div class="posture-svg-wrap">
+      <svg width="200" height="420" viewBox="0 0 200 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Tư thế đi bộ đúng">
+        <!-- Glow background -->
+        <ellipse cx="100" cy="380" rx="60" ry="16" fill="#4ADE8011"/>
+
+        <!-- ĐẦU -->
+        <circle cx="100" cy="50" r="28" fill="#1A2B3E" stroke="#4ADE80" stroke-width="2"/>
+        <!-- Mắt -->
+        <circle cx="91" cy="47" r="3" fill="#4ADE80"/>
+        <circle cx="109" cy="47" r="3" fill="#4ADE80"/>
+        <!-- Mũi -->
+        <line x1="100" y1="50" x2="100" y2="56" stroke="#4ADE80" stroke-width="1.5"/>
+        <!-- Miệng -->
+        <path d="M93 61 Q100 66 107 61" stroke="#4ADE80" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+
+        <!-- LABEL đầu -->
+        <line x1="128" y1="44" x2="155" y2="32" stroke="#4ADE8066" stroke-width="1" stroke-dasharray="3,2"/>
+        <text x="158" y="35" fill="#4ADE80" font-size="9" font-family="Inter" font-weight="600">Mắt nhìn</text>
+        <text x="158" y="46" fill="#8B9EB7" font-size="8" font-family="Inter">về phía trước</text>
+
+        <!-- CỔ -->
+        <rect x="92" y="76" width="16" height="18" rx="6" fill="#1A2B3E" stroke="#5A7391" stroke-width="1.5"/>
+
+        <!-- THÂN -->
+        <path d="M68 94 Q76 92 100 92 Q124 92 132 94 L138 180 Q120 188 100 188 Q80 188 62 180 Z" fill="#1A2B3E" stroke="#4ADE80" stroke-width="1.5"/>
+
+        <!-- VAI label -->
+        <line x1="62" y1="100" x2="30" y2="88" stroke="#4ADE8066" stroke-width="1" stroke-dasharray="3,2"/>
+        <text x="4" y="88" fill="#4ADE80" font-size="9" font-family="Inter" font-weight="600">Vai thả</text>
+        <text x="4" y="99" fill="#8B9EB7" font-size="8" font-family="Inter">ra sau</text>
+
+        <!-- CORE label -->
+        <line x1="138" y1="140" x2="162" y2="140" stroke="#4ADE8066" stroke-width="1" stroke-dasharray="3,2"/>
+        <text x="165" y="137" fill="#4ADE80" font-size="9" font-family="Inter" font-weight="600">Siết nhẹ</text>
+        <text x="165" y="148" fill="#8B9EB7" font-size="8" font-family="Inter">cơ lõi</text>
+
+        <!-- TAY TRÁI (đánh về sau) -->
+        <path d="M68 100 Q50 130 42 160 Q46 168 52 162 Q58 138 72 112 Z" fill="#1A2B3E" stroke="#5A7391" stroke-width="1.5" stroke-linejoin="round"/>
+        <!-- Bàn tay trái -->
+        <ellipse cx="46" cy="166" rx="8" ry="6" fill="#1A2B3E" stroke="#5A7391" stroke-width="1.5"/>
+
+        <!-- TAY PHẢI (đánh về trước) -->
+        <path d="M132 100 Q148 125 156 152 Q152 160 146 155 Q140 130 126 108 Z" fill="#1A2B3E" stroke="#4ADE80" stroke-width="1.5" stroke-linejoin="round"/>
+        <!-- Bàn tay phải -->
+        <ellipse cx="152" cy="158" rx="8" ry="6" fill="#1A2B3E" stroke="#4ADE80" stroke-width="1.5"/>
+
+        <!-- TAY label -->
+        <line x1="156" y1="155" x2="176" y2="168" stroke="#4ADE8066" stroke-width="1" stroke-dasharray="3,2"/>
+        <text x="4" y="170" fill="#4ADE80" font-size="9" font-family="Inter" font-weight="600">Tay đánh</text>
+        <text x="4" y="181" fill="#8B9EB7" font-size="8" font-family="Inter">nhịp nhàng</text>
+
+        <!-- ĐÙI PHẢI (bước trước) -->
+        <path d="M100 188 Q114 196 118 230 Q110 240 104 236 Q100 210 88 196 Z" fill="#1A2B3E" stroke="#4ADE80" stroke-width="1.5"/>
+        <!-- ĐÙI TRÁI (bước sau) -->
+        <path d="M100 188 Q86 196 82 228 Q90 238 96 234 Q100 210 112 196 Z" fill="#1A2B3E" stroke="#5A7391" stroke-width="1.5"/>
+
+        <!-- ỐNG CHÂN PHẢI -->
+        <path d="M104 236 Q108 268 106 296 Q100 300 96 296 Q96 266 100 236 Z" fill="#1A2B3E" stroke="#4ADE80" stroke-width="1.5"/>
+        <!-- ỐNG CHÂN TRÁI -->
+        <path d="M96 234 Q90 264 88 292 Q94 298 98 294 Q100 266 104 236 Z" fill="#1A2B3E" stroke="#5A7391" stroke-width="1.5"/>
+
+        <!-- BÀN CHÂN PHẢI (chạm gót trước) -->
+        <path d="M96 296 Q92 302 78 306 Q74 312 80 316 Q96 312 108 308 Q108 300 104 296 Z" fill="#4ADE80" stroke="#4ADE80" stroke-width="1"/>
+        <!-- GIOT label -->
+        <line x1="78" y1="312" x2="30" y2="330" stroke="#4ADE8066" stroke-width="1" stroke-dasharray="3,2"/>
+        <text x="2" y="330" fill="#4ADE80" font-size="9" font-family="Inter" font-weight="600">Gót chạm</text>
+        <text x="2" y="341" fill="#8B9EB7" font-size="8" font-family="Inter">đất trước</text>
+
+        <!-- BÀN CHÂN TRÁI (đẩy mũi) -->
+        <path d="M88 292 Q84 298 84 306 Q92 318 106 316 Q114 310 110 304 Q104 300 100 294 Z" fill="#1A2B3E" stroke="#5A7391" stroke-width="1.5"/>
+
+        <!-- Đường chạy (mặt đất) -->
+        <line x1="30" y1="318" x2="170" y2="318" stroke="#1F3347" stroke-width="2" stroke-dasharray="8,4"/>
+
+        <!-- Mũi tên hướng tiến -->
+        <path d="M160 80 L178 80" stroke="#4ADE80" stroke-width="2" marker-end="url(#arr)"/>
+        <defs>
+          <marker id="arr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6 Z" fill="#4ADE80"/>
+          </marker>
+        </defs>
+        <text x="162" y="73" fill="#4ADE80" font-size="8" font-family="Inter">Hướng tiến</text>
+      </svg>
+    </div>
+
+    <!-- Checklist -->
+    <div class="posture-list">
+      <div class="posture-item">
+        <span class="p-icon">🧠</span>
+        <div>
+          <div class="p-title">Đầu & cổ — thẳng, không cúi</div>
+          <p class="p-desc">Cằm song song mặt đất. Mắt nhìn xa 4–6m phía trước, không nhìn xuống chân. Tưởng tượng sợi dây kéo nhẹ đỉnh đầu lên.</p>
+        </div>
+      </div>
+      <div class="posture-item">
+        <span class="p-icon">🫁</span>
+        <div>
+          <div class="p-title">Vai — thả lỏng, kéo nhẹ ra sau</div>
+          <p class="p-desc">Nhún vai lên cao rồi thả để reset tư thế. Không gù, không co ro. Ngực mở ra để phổi hoạt động tối đa.</p>
+        </div>
+      </div>
+      <div class="posture-item">
+        <span class="p-icon">💪</span>
+        <div>
+          <div class="p-title">Cơ lõi — bật nhẹ, không căng cứng</div>
+          <p class="p-desc">Siết nhẹ cơ bụng vào phía cột sống. Không cần căng cứng — chỉ cần "bật" để giữ thăng bằng và bảo vệ lưng.</p>
+        </div>
+      </div>
+      <div class="posture-item">
+        <span class="p-icon">🦾</span>
+        <div>
+          <div class="p-title">Tay — đánh nhịp nhàng, không vắt chéo</div>
+          <p class="p-desc">Khuỷu tay gấp ~90°, đánh tự nhiên dọc theo thân người. Không vắt chéo qua đường giữa — lãng phí năng lượng và làm lệch tư thế.</p>
+        </div>
+      </div>
+      <div class="posture-item">
+        <span class="p-icon">🦵</span>
+        <div>
+          <div class="p-title">Bước chân — ngắn, nhanh, lăn từ gót sang mũi</div>
+          <p class="p-desc">Gót chân chạm đất trước, lăn đến mũi bàn chân. Bước ngắn và nhanh hơn bước dài và chậm — giảm lực chấn động lên khớp gối.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="selfcheck">
+    <div class="selfcheck-head">
+      <span class="selfcheck-title">⏱️ Tự kiểm tra 30 giây trước khi đi</span>
+      <button class="selfcheck-btn" id="scBtn" onclick="startSelfCheck()">▶ Bắt đầu</button>
+    </div>
+    <div class="selfcheck-track"><div class="selfcheck-progress" id="scProgress"></div></div>
+    <p class="selfcheck-label" id="scLabel">Nhấn "Bắt đầu" — mỗi điểm ở checklist trên sẽ lần lượt sáng lên 6 giây, làm theo đúng thứ tự: đầu → vai → cơ lõi → tay → bước chân.</p>
+  </div>
+</section>
+
+<div class="divider"><hr></div>
+
+<!-- ══════════════════════════════════════════
+     TIMELINE — 3 thời điểm vàng
+══════════════════════════════════════════ -->
+<section id="timeline">
+  <p class="section-label">Lịch trong ngày</p>
+  <h2 class="section-title">3 thời điểm vàng<br>không cần tập gym</h2>
+  <p class="section-desc">Ba đoạn nhỏ dễ duy trì hơn một buổi dài — và tổng lợi ích sinh học còn cao hơn đáng kể.</p>
+
+  <div class="timeline">
+
+    <div class="tl-item" onclick="toggleTl(this)">
+      <div class="tl-time">6–7h<br>sáng</div>
+      <div class="tl-dot"></div>
+      <div class="tl-body">
+        <div class="tl-head">
+          <span class="tl-badge">Giảm cân · Đồng hồ sinh học</span>
+        </div>
+        <div class="tl-title">Buổi sáng — Khởi động trao đổi chất</div>
+        <div class="tl-detail">
+          Ánh nắng sáng sớm tái cân bằng đồng hồ sinh học, cải thiện giấc ngủ đêm hôm sau. Đi bộ lúc bụng đói giúp cơ thể sử dụng mỡ dự trữ hiệu quả hơn. Lưu ý: cơ còn lạnh sau một đêm — cần khởi động kỹ 3–5 phút trước khi tăng tốc. <strong style="color:var(--cream)">Thời gian lý tưởng: 20–30 phút.</strong>
+          <br><span class="tl-source">📖 Harvard Health Publishing</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item" onclick="toggleTl(this)">
+      <div class="tl-time">12h30<br>trưa</div>
+      <div class="tl-dot"></div>
+      <div class="tl-body">
+        <div class="tl-head">
+          <span class="tl-badge">Đường huyết · Não bộ</span>
+        </div>
+        <div class="tl-title">Sau bữa trưa — Kiểm soát đường huyết</div>
+        <div class="tl-detail">
+          10–15 phút nhẹ nhàng sau ăn giúp ổn định đường huyết — đặc biệt quan trọng để phòng tiểu đường type 2. Đồng thời phá vỡ cơn buồn ngủ chiều, tăng lưu lượng máu lên não. Chú ý: cần chờ ít nhất 20–30 phút sau khi ăn trước khi đi. <strong style="color:var(--cream)">Thời gian lý tưởng: 10–15 phút.</strong>
+          <br><span class="tl-source">📖 Diabetes Care, American Diabetes Association</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item active" onclick="toggleTl(this)">
+      <div class="tl-time">8–9h<br>tối</div>
+      <div class="tl-dot"></div>
+      <div class="tl-body">
+        <div class="tl-head">
+          <span class="tl-badge">Giải stress · Chất lượng ngủ ✦</span>
+        </div>
+        <div class="tl-title">Buổi tối — Xoa dịu trước khi ngủ</div>
+        <div class="tl-detail">
+          Cơ bắp đã làm ấm cả ngày — bước đi mạnh và hiệu quả nhất. Đi bộ nhẹ giảm cortisol, cân bằng đường huyết sau bữa tối. Đi bộ vừa phải (không tai nghe, không điện thoại) giúp não thực sự nghỉ ngơi. <strong style="color:var(--cream)">Kết thúc ít nhất 60–90 phút trước khi lên giường. Thời gian lý tưởng: 20–30 phút.</strong>
+          <br><span class="tl-source">📖 Sleep Medicine Reviews · Stanford Lifestyle Medicine</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"><hr></div>
+
+<!-- ══════════════════════════════════════════
+     JAPANESE WALKING — Mở rộng đầy đủ
+══════════════════════════════════════════ -->
+<section id="method">
+  <p class="section-label">Kỹ thuật nâng cao</p>
+  <h2 class="section-title">Japanese Walking<br>— đổi nhịp, trẻ hoá sinh học</h2>
+  <p class="section-desc">Phương pháp từ Đại học Shinshu, Nhật Bản: xen kẽ nhanh–chậm để tăng VO2 Max mà không cần chạy bộ. Được chứng minh hiệu quả đặc biệt với người trung niên.</p>
+
+  <div class="method-wrap">
+    <!-- Interval visualizer -->
+    <div class="interval-track">
+      <div class="iv-fast">⚡ NHANH · 3'</div>
+      <div class="iv-slow">🌿 CHẬM · 3'</div>
+      <div class="iv-fast">⚡ NHANH · 3'</div>
+      <div class="iv-slow">🌿 CHẬM · 3'</div>
+      <div class="iv-fast" style="display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;color:var(--night);">×4–5</div>
+    </div>
+    <p class="interval-note">Lặp lại 4–5 vòng · Tổng ~30 phút · Nghỉ xen kẽ không làm giảm hiệu quả</p>
+
+    <div class="check-hint">
+      💡 <strong>Kiểm tra cường độ đúng:</strong> Đi nhanh — hơi thở tăng nhưng <em>vẫn nói được câu ngắn</em>. Nếu không nói được → chậm lại ngay. Nếu nói chuyện thoải mái → cần đi nhanh hơn.
+    </div>
+
+    <!-- Ai nên / không nên -->
+    <div class="who-grid">
+      <div class="who-box yes">
+        <div class="who-label">✅ Nên áp dụng</div>
+        <ul>
+          <li>Người 35–65 tuổi chưa quen chạy bộ</li>
+          <li>Muốn cải thiện tim mạch không cần gym</li>
+          <li>Đang kiểm soát đường huyết, huyết áp</li>
+          <li>Người mới bắt đầu tập luyện</li>
+          <li>Muốn giảm mỡ bụng hiệu quả</li>
+        </ul>
+      </div>
+      <div class="who-box no">
+        <div class="who-label">⚠️ Cần điều chỉnh</div>
+        <ul>
+          <li><strong style="color:var(--cream)">Đau gối:</strong> Rút ngắn đoạn nhanh xuống 1–2 phút, ưu tiên đi trên mặt phẳng</li>
+          <li><strong style="color:var(--cream)">Béo phì:</strong> Bắt đầu 2 phút nhanh / 4 phút chậm, tăng dần sau 2 tuần</li>
+          <li><strong style="color:var(--cream)">Bệnh tim:</strong> Tham khảo bác sĩ trước khi áp dụng interval</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="method-meta">
+      <div><span class="meta-val">4–5×</span><div class="meta-desc">Số vòng mỗi buổi</div></div>
+      <div><span class="meta-val">30'</span><div class="meta-desc">Tổng thời gian</div></div>
+      <div><span class="meta-val">4 tuần</span><div class="meta-desc">Cảm nhận rõ kết quả</div></div>
+      <div><span class="meta-val">5×/tuần</span><div class="meta-desc">Tần suất lý tưởng</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><hr></div>
+
+<!-- ══════════════════════════════════════════
+     5 TIPS
+══════════════════════════════════════════ -->
+<section id="tips">
+  <p class="section-label">Kế hoạch hành động</p>
+  <h2 class="section-title">5 ý tưởng<br>bắt đầu ngay tuần này</h2>
+
+  <div class="tips-list">
+    <div class="tip">
+      <div class="tip-num">1</div>
+      <div>
+        <div class="tip-title">Lịch "3 thời điểm vàng" mỗi ngày</div>
+        <p class="tip-desc">Sáng 20' + trưa 10' + tối 25'. Ba đoạn nhỏ dễ duy trì hơn một buổi dài — tổng số bước tích lũy đạt mục tiêu 7.000–8.000 bước một cách tự nhiên.</p>
+      </div>
+    </div>
+    <div class="tip">
+      <div class="tip-num">2</div>
+      <div>
+        <div class="tip-title">Thử Japanese Walking buổi tối trong 4 tuần</div>
+        <p class="tip-desc">Xen kẽ nhanh–chậm 3 phút mỗi tối lúc 8h. Sau 4 tuần so sánh sức bền leo cầu thang và chất lượng giấc ngủ để đo tiến độ thực tế.</p>
+      </div>
+    </div>
+    <div class="tip">
+      <div class="tip-num">3</div>
+      <div>
+        <div class="tip-title">Tạo "giờ không màn hình" sau 8h tối</div>
+        <p class="tip-desc">Thay vì lướt điện thoại, đi bộ 20–25 phút không tai nghe, không điện thoại. Não được nghỉ ngơi thật sự — ngủ sâu hơn, ít thức giữa đêm hơn. Đông Anh mình đang phát triển: công viên, vườn hoa, phố đi bộ, nhà văn hoá đang được xây dựng nhiều hơn. Đó cũng là lợi thế để bắt đầu.</p>
+      </div>
+    </div>
+    <div class="tip">
+      <div class="tip-num">4</div>
+      <div>
+        <div class="tip-title">Nâng cấp giày trước khi làm gì khác</div>
+        <p class="tip-desc">Giày đúng là nền tảng — đế đệm tốt, nâng vòm bàn chân, mũi giày đủ rộng. Đầu tư một lần, bảo vệ khớp gối và hông nhiều năm.</p>
+      </div>
+    </div>
+    <div class="tip">
+      <div class="tip-num">5</div>
+      <div>
+        <div class="tip-title">Đi bộ "mindful" — không nghĩ đến công việc</div>
+        <p class="tip-desc">Chọn một lộ trình cố định. Chú ý 5 thứ mắt thấy, 3 thứ tai nghe, 1 thứ cảm nhận trên da. Rèn sự hiện diện và giải phóng não trước khi ngủ. <a href="#meditation" class="tip-link">→ Một ý tưởng còn bỏ ngỏ ở cuối bài</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><hr></div>
+
+<!-- ══════════════════════════════════════════
+     THIỀN HÀNH — Đỉnh cao của đi bộ
+══════════════════════════════════════════ -->
+<section id="meditation">
+  <p class="section-label">Một câu hỏi bỏ ngỏ</p>
+  <h2 class="section-title">Có một điều mà đi bộ nói riêng<br>và mọi việc trong đời sống của con người nói chung:</h2>
+
+  <div class="med-wrap">
+    <p class="med-poem">Có người nói, đỉnh cao của đi bộ không phải là đi nhanh hay kỹ thuật.</p>
+    <p class="med-poem">Mà là đến một lúc... bước chân không còn dùng để đi tới đâu cả.</p>
+    <p class="med-poem">Mọi kỹ thuật rồi cũng sẽ kết thúc. Chỉ còn lại người đang bước.</p>
+    <p class="med-poem">Có người nói, mỗi bước chân đều giống như vừa trở về — về nhà, về trái tim, về đan điền.</p>
+    <p class="med-poem med-question">Đó có phải là thiền hành không?</p>
+    <p class="med-signoff">Bạn và tôi cùng khám phá nhé!</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     CTA — Lời kêu gọi hành động
+══════════════════════════════════════════ -->
+<div class="cta-block">
+  <div class="cta-inner">
+    <p class="cta-label">Bắt đầu tối nay</p>
+    <h2 class="cta-title">Hôm nay — thử ngay<br>4 điều đơn giản này</h2>
+
+    <div class="cta-checklist">
+      <div class="cta-item">
+        <div class="cta-check">✓</div>
+        <div class="cta-text">
+          Đi bộ 20 phút sau 8h tối
+          <small>Không tai nghe, không điện thoại · công viên hoặc phố đi bộ gần nhà là lựa chọn tốt</small>
+        </div>
+      </div>
+      <div class="cta-item">
+        <div class="cta-check">✓</div>
+        <div class="cta-text">
+          Xen kẽ 3' nhanh / 3' chậm
+          <small>Japanese Walking — thử ngay tối nay</small>
+        </div>
+      </div>
+      <div class="cta-item">
+        <div class="cta-check">✓</div>
+        <div class="cta-text">
+          Kiểm tra tư thế: vai, đầu, cơ lõi
+          <small>30 giây soi gương trước khi ra cửa</small>
+        </div>
+      </div>
+      <div class="cta-item">
+        <div class="cta-check">✓</div>
+        <div class="cta-text">
+          Ngủ sớm hơn 30 phút so với thường lệ
+          <small>Kết hợp với đi bộ tối — hiệu quả nhân đôi</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="remind-wrap">
+      <button class="remind-btn" id="remindBtn" onclick="setReminder()">🔔 Nhắc tôi 20h tối nay</button>
+      <p class="remind-note" id="remindNote">Cần giữ trang này mở trên điện thoại/máy tính để nhận thông báo.</p>
+    </div>
+
+    <p class="cta-quote">
+      "Không có loại thuốc nào thay thế được <strong>30 phút đi bộ mỗi ngày.</strong>"
+      <br><span style="font-size:.75rem;color:var(--muted2);margin-top:6px;display:block;">— tinh thần chung từ các nghiên cứu y khoa về vận động</span>
+    </p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer>
+  <p style="font-size:.72rem;">
+    Tổng hợp &amp; biên soạn bởi <strong>Bố của Dừa &amp; Mixue</strong> · Mùa hè 2026
+  </p>
+</footer>
+
+<script>
+  // Self-check 30s: lần lượt sáng từng điểm trong checklist tư thế
+  let scProgressTimer = null, scStepTimer = null;
+  function startSelfCheck() {
+    if (scStepTimer) return;
+    const items = document.querySelectorAll('.posture-item');
+    const btn = document.getElementById('scBtn');
+    const label = document.getElementById('scLabel');
+    const progress = document.getElementById('scProgress');
+    const stepDuration = 6000; // 6s x 5 điểm = 30s
+    const total = items.length;
+    let step = 0, elapsed = 0;
+
+    btn.disabled = true;
+    btn.textContent = 'Đang kiểm tra…';
+    progress.style.width = '0%';
+
+    function highlight(i) {
+      items.forEach(it => it.classList.remove('active-check'));
+      items[i].classList.add('active-check');
+      const title = items[i].querySelector('.p-title')?.textContent || '';
+      label.textContent = `Điểm ${i + 1}/${total}: ${title}`;
+      items[i].scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    highlight(step);
+
+    scProgressTimer = setInterval(() => {
+      elapsed += 100;
+      progress.style.width = Math.min(100, (elapsed / (stepDuration * total)) * 100) + '%';
+    }, 100);
+
+    scStepTimer = setInterval(() => {
+      step++;
+      if (step >= total) {
+        clearInterval(scStepTimer);
+        clearInterval(scProgressTimer);
+        scStepTimer = null;
+        scProgressTimer = null;
+        items.forEach(it => it.classList.remove('active-check'));
+        progress.style.width = '100%';
+        label.textContent = '✓ Xong! Đã kiểm tra đủ 5 điểm — sẵn sàng xuất phát.';
+        btn.disabled = false;
+        btn.textContent = '▶ Kiểm tra lại';
+        return;
+      }
+      highlight(step);
+    }, stepDuration);
+  }
+
+  // Nhắc tôi 20h tối nay — dùng Notification API, chỉ hoạt động khi tab còn mở
+  function setReminder() {
+    const btn = document.getElementById('remindBtn');
+    const note = document.getElementById('remindNote');
+    if (!('Notification' in window)) {
+      note.textContent = 'Trình duyệt này không hỗ trợ thông báo — hãy tự đặt báo thức lúc 20:00 nhé.';
+      return;
+    }
+    Notification.requestPermission().then(perm => {
+      if (perm !== 'granted') {
+        note.textContent = 'Bạn chưa cho phép thông báo — hãy tự đặt báo thức lúc 20:00 nhé.';
+        return;
+      }
+      const now = new Date();
+      const target = new Date();
+      target.setHours(20, 0, 0, 0);
+      if (target <= now) target.setDate(target.getDate() + 1);
+      const ms = target - now;
+      setTimeout(() => {
+        new Notification('Đến giờ đi bộ rồi! 🚶', {
+          body: '20 phút không tai nghe, không điện thoại — bắt đầu thôi.'
+        });
+      }, ms);
+      btn.disabled = true;
+      btn.textContent = '🔔 Đã đặt nhắc lúc 20:00';
+      const hrs = Math.floor(ms / 3600000);
+      const mins = Math.round((ms % 3600000) / 60000);
+      note.textContent = `Sẽ nhắc sau khoảng ${hrs} giờ ${mins} phút — miễn là trang này còn mở.`;
+    });
+  }
+
+  // Timeline toggle
+  function toggleTl(el) {
+    document.querySelectorAll('.tl-item').forEach(i => i.classList.remove('active'));
+    el.classList.add('active');
+  }
+
+  // Scroll reveal with stagger
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const siblings = Array.from(entry.target.parentElement.children);
+      const idx = siblings.indexOf(entry.target);
+      setTimeout(() => entry.target.classList.add('visible'), idx * 90);
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll(
+    '.mistake-card, .posture-item, .posture-svg-wrap, .tl-item, .tip, .method-wrap, .med-wrap, .cta-inner'
+  ).forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

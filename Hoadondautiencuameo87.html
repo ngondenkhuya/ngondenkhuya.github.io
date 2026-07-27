@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1987: Chúng ta không già đi, chúng ta đang bước vào giai đoạn quan trọng nhất</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F2EAD8;
+    --paper-deep:#E9DFC6;
+    --ink:#262420;
+    --ink-soft:#544E43;
+    --forest:#2F3E33;
+    --gold:#B08A2E;
+    --brick:#8B4A3A;
+    --line:#C9BB9C;
+  }
+  html[data-theme="dark"]{
+    --paper:#191712;
+    --paper-deep:#232019;
+    --ink:#E9E2D3;
+    --ink-soft:#A69D8B;
+    --forest:#8FBFA0;
+    --gold:#D9AE55;
+    --brick:#D48468;
+    --line:#3A342A;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Be Vietnam Pro', sans-serif;
+    font-weight:400;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+    transition:background 0.4s ease, color 0.4s ease;
+  }
+  ::selection{background:var(--gold);color:var(--paper);}
+
+  body::before{
+    content:"";
+    position:fixed;inset:0;
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(38,36,32,0.05) 1px, transparent 0);
+    background-size:22px 22px;
+    pointer-events:none;
+    z-index:0;
+  }
+
+  .wrap{max-width:680px;margin:0 auto;padding:0 28px;position:relative;z-index:1;}
+
+  header.hero{
+    padding:90px 0 60px;
+    border-bottom:1px solid var(--line);
+  }
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12.5px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--brick);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:28px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:28px;height:1px;
+    background:var(--brick);
+    display:inline-block;
+  }
+  h1{
+    font-family:'Lora', serif;
+    font-weight:600;
+    font-size:clamp(32px, 6vw, 48px);
+    line-height:1.22;
+    letter-spacing:-0.01em;
+    color:var(--forest);
+    margin-bottom:22px;
+  }
+  h1 em{
+    font-style:italic;
+    color:var(--brick);
+  }
+  .dek{
+    font-family:'Lora', serif;
+    font-style:italic;
+    font-size:18px;
+    color:var(--ink-soft);
+    max-width:52ch;
+  }
+  .meta-row{
+    margin-top:34px;
+    display:flex;
+    gap:24px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    color:var(--ink-soft);
+    letter-spacing:0.02em;
+  }
+
+  article{padding:56px 0 20px;}
+  .lede{
+    font-size:21px;
+    font-family:'Lora', serif;
+    color:var(--forest);
+    margin-bottom:34px;
+  }
+  p{
+    font-size:17px;
+    color:var(--ink);
+    margin-bottom:18px;
+    max-width:60ch;
+  }
+
+  h2{
+    font-family:'Lora', serif;
+    font-weight:600;
+    font-size:24px;
+    color:var(--forest);
+    margin:54px 0 22px;
+    padding-top:30px;
+    position:relative;
+  }
+  h2::before{
+    content:"";
+    position:absolute;
+    top:0;left:0;
+    width:42px;height:3px;
+    background:var(--gold);
+  }
+
+  .rule{
+    border:0;
+    height:1px;
+    background:var(--line);
+    margin:46px 0;
+  }
+
+  .checklist{list-style:none;margin:26px 0 36px;}
+  .checklist li{
+    display:flex;
+    gap:14px;
+    align-items:flex-start;
+    padding:11px 0;
+    border-bottom:1px solid var(--line);
+    font-size:16.5px;
+  }
+  .checklist li:last-child{border-bottom:none;}
+  .checklist li::before{
+    content:"";
+    flex-shrink:0;
+    width:7px;height:7px;
+    border-radius:50%;
+    background:var(--gold);
+    margin-top:9px;
+  }
+
+  /* invoice block — ẩn dụ mượn từ bài 1 */
+  .invoice{
+    margin:36px 0 40px;
+    background:var(--paper-deep);
+    border:1px solid var(--line);
+    padding:30px 26px;
+    position:relative;
+  }
+  .invoice::before{
+    content:"HÓA ĐƠN";
+    position:absolute;
+    top:-11px;left:24px;
+    background:var(--forest);
+    color:var(--paper);
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.14em;
+    padding:4px 10px;
+  }
+  .invoice-title{
+    font-family:'Lora', serif;
+    font-style:italic;
+    font-size:18px;
+    color:var(--ink-soft);
+    margin-bottom:18px;
+    margin-top:6px;
+  }
+  .invoice-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:16px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:13.5px;
+    color:var(--ink);
+    padding:9px 0;
+    border-bottom:1px dashed var(--line);
+  }
+  .invoice-row span:first-child{color:var(--ink-soft);}
+  .invoice-row span:last-child{
+    color:var(--brick);
+    font-weight:500;
+    white-space:nowrap;
+  }
+  .invoice-total{
+    display:flex;justify-content:space-between;
+    margin-top:16px;padding-top:16px;
+    border-top:2px solid var(--forest);
+    font-family:'JetBrains Mono', monospace;
+    font-size:14px;
+    color:var(--forest);
+    font-weight:600;
+  }
+
+  /* timeline — nỗi sợ / định nghĩa thành công theo tuổi */
+  .timeline{
+    margin:30px 0 40px;
+    border-left:3px solid var(--forest);
+    padding:6px 0 6px 26px;
+  }
+  .timeline-item{
+    display:grid;
+    grid-template-columns:90px 1fr;
+    gap:16px;
+    padding:14px 0;
+    border-bottom:1px solid var(--line);
+    align-items:baseline;
+  }
+  .timeline-item:last-child{border-bottom:none;}
+  .timeline-label{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.04em;
+    color:var(--brick);
+    text-transform:uppercase;
+  }
+  .timeline-value{font-size:16px;color:var(--ink);}
+
+  .pull{
+    font-family:'Lora', serif;
+    font-style:italic;
+    font-size:25px;
+    line-height:1.5;
+    color:var(--forest);
+    text-align:center;
+    margin:58px auto;
+    max-width:46ch;
+    padding:0 10px;
+  }
+  .pull span{color:var(--brick);}
+
+  footer{
+    padding:50px 0 90px;
+    border-top:1px solid var(--line);
+    margin-top:40px;
+  }
+  .closer{
+    font-family:'Lora', serif;
+    font-size:19px;
+    line-height:1.8;
+    color:var(--forest);
+    max-width:58ch;
+  }
+  .signoff{
+    margin-top:30px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+
+  .reveal{
+    opacity:0;
+    transform:translateY(14px);
+    transition:opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.show{opacity:1;transform:translateY(0);}
+
+
+  #player{
+    position:fixed;
+    bottom:24px;right:24px;
+    background:var(--forest);
+    color:var(--paper);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:10px 16px;
+    border-radius:40px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.06em;
+    box-shadow:0 4px 20px rgba(0,0,0,0.25);
+    z-index:999;
+    opacity:0.92;
+    transition:opacity 0.3s;
+  }
+  #player:hover{opacity:1;}
+  #playBtn{
+    background:none;border:none;
+    color:var(--paper);font-size:16px;
+    cursor:pointer;padding:0;line-height:1;
+  }
+
+  #themeToggle{
+    position:fixed;
+    top:24px;right:24px;
+    width:42px;height:42px;
+    border-radius:50%;
+    background:var(--forest);
+    color:var(--paper);
+    border:none;
+    font-size:17px;
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;
+    box-shadow:0 4px 20px rgba(0,0,0,0.25);
+    z-index:999;
+    opacity:0.92;
+    transition:opacity 0.3s, background 0.4s ease;
+  }
+  #themeToggle:hover{opacity:1;}
+
+  @media (max-width:520px){
+    header.hero{padding:64px 0 44px;}
+    .timeline-item{grid-template-columns:1fr;gap:4px;}
+    .invoice{padding:24px 18px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{transition:none !important;}
+    .reveal{opacity:1;transform:none;}
+  }
+</style>
+</head>
+<body>
+
+<button id="themeToggle" onclick="toggleTheme()" aria-label="Chuyển chế độ sáng/tối">🌙</button>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="eyebrow">Hóa đơn đầu tiên của Mèo</div>
+    <h1>1987 — Chúng ta không già đi.<br>Chúng ta đang bước vào <em>giai đoạn quan trọng nhất</em> của cuộc đời.</h1>
+    <p class="dek">Có một ngày, bạn đứng trước gương và nhận ra người trong gương vẫn là mình, nhưng cơ thể thì không còn như trước nữa.</p>
+    <div class="meta-row">
+      <span>SINH NĂM 1987</span>
+      <span>TUỔI 39</span>
+      <span>7 PHÚT ĐỌC</span>
+    </div>
+    <div class="meta-row" style="margin-top:10px;color:var(--brick);">
+      <span>✍️ Mèo Đen</span>
+    </div>
+  </header>
+
+  <article>
+
+    <p class="lede reveal">39 không phải là một cột mốc đặc biệt trên giấy tờ. Không 49, không 53. Không ai tổ chức sinh nhật linh đình. Không có nghi thức đánh dấu. Không có tiếng chuông báo hiệu. Nhưng cơ thể thì biết. Nó biết rõ hơn chúng ta tưởng.</p>
+
+    <p class="reveal">Có thể bạn vẫn đi làm từ sáng đến tối. Vẫn lái xe hàng trăm cây số. Vẫn bế con, vẫn họp hành, vẫn cười nói với bạn bè. Bề ngoài, mọi thứ dường như chẳng khác mười năm trước. Chỉ có những thay đổi rất nhỏ.</p>
+
+    <ul class="checklist reveal">
+      <li>Sáng thức dậy, không còn bật dậy ngay như trước</li>
+      <li>Một đêm thức khuya phải mất hai ngày mới hồi lại</li>
+      <li>Leo vài tầng cầu thang bắt đầu thấy thở gấp</li>
+      <li>Bụng nhô ra thêm một chút, dù không nghĩ mình ăn nhiều</li>
+      <li>Mắt mỏi nhanh hơn khi nhìn màn hình</li>
+      <li>Đôi lúc, chợt quên một việc vừa định làm</li>
+    </ul>
+
+    <p class="reveal">Không có gì quá nghiêm trọng. Chỉ là những dấu hiệu đầu tiên. Chúng đến rất lịch sự. Âm thầm. Kiên nhẫn. Giống như thời gian.</p>
+
+    <hr class="rule">
+
+    <h2 class="reveal">Chúng ta là một thế hệ rất đặc biệt</h2>
+    <p class="reveal">Người sinh năm 1987 lớn lên trong một giai đoạn mà Việt Nam thay đổi nhanh đến mức chỉ cần nhìn lại cũng thấy như hai thế giới khác nhau. Chúng ta từng chạy chân trần ngoài ngõ, chơi bi, đá cầu, trốn tìm đến khi mẹ gọi về ăn cơm. Điện thoại bàn là tài sản quý. Ti vi có vài kênh. Internet là điều xa lạ.</p>
+    <p class="reveal">Rồi chỉ trong hơn hai mươi năm, mọi thứ thay đổi. Chúng ta chứng kiến Yahoo! Messenger ra đời rồi biến mất. Từ điện thoại đen trắng sang điện thoại thông minh. Từ quán Internet đông nghịt người đến trí tuệ nhân tạo có thể trả lời gần như mọi câu hỏi chỉ trong vài giây.</p>
+    <p class="reveal">Chúng ta là thế hệ phải học cách thích nghi nhiều hơn bất kỳ thế hệ nào trước đó. Nhưng có một điều rất ít người dạy chúng ta: không ai dạy cách bước vào tuổi bốn mươi. Đây cũng là thế hệ đứng giữa hai đầu — một bên là con cái còn nhỏ, cần người đưa đón, cần học phí, cần thời gian; một bên là cha mẹ đã già, bắt đầu đau ốm, bắt đầu phải vào viện thường xuyên hơn. Ở giữa là chính mình, người duy nhất không có ai đứng ra lo cho, vì ai cũng nghĩ mình còn khỏe, còn trẻ, còn chịu được.</p>
+
+    <h2 class="reveal">Nỗi sợ thay đổi theo từng chặng tuổi</h2>
+    <div class="timeline reveal">
+      <div class="timeline-item"><span class="timeline-label">20 tuổi</span><span class="timeline-value">Sợ thất nghiệp</span></div>
+      <div class="timeline-item"><span class="timeline-label">30 tuổi</span><span class="timeline-value">Sợ nghèo</span></div>
+      <div class="timeline-item"><span class="timeline-label">Gần 40</span><span class="timeline-value">Sợ một cuộc gọi lúc nửa đêm từ bệnh viện. Sợ kết quả khám sức khỏe có chỉ số in màu đỏ. Sợ bố mẹ nói nhiều hơn về thuốc, trong khi con ngày càng lớn còn mình bắt đầu thấy đuối.</span></div>
+    </div>
+    <p class="reveal">Lần đầu tiên trong đời, chúng ta hiểu rằng có những thứ không thể mua lại bằng tiền: một trái tim khỏe mạnh, một giấc ngủ sâu, một buổi sáng thức dậy không đau lưng, một buổi chiều chạy theo con mà không phải dừng lại để lấy hơi. Ngày trẻ, chúng ta nghĩ sức khỏe là điều hiển nhiên. Đến tuổi này mới hiểu, đó là một đặc quyền.</p>
+
+    <div class="invoice reveal">
+      <div class="invoice-title">Những gì 39 năm đã vay của cơ thể</div>
+      <div class="invoice-row"><span>Những đêm thức đến 1 giờ sáng</span><span>chưa trả</span></div>
+      <div class="invoice-row"><span>Những bữa ăn vội vàng, ăn muộn giờ</span><span>đang tính lãi</span></div>
+      <div class="invoice-row"><span>Những lần bỏ qua khám sức khỏe</span><span>quá hạn</span></div>
+      <div class="invoice-row"><span>Mười năm ngồi nhiều, vận động ít</span><span>lãi mẹ đẻ lãi con</span></div>
+      <div class="invoice-row"><span>Thể dục 30 phút mỗi ngày</span><span>còn thiếu</span></div>
+      <div class="invoice-total"><span>Hạn thanh toán</span><span>không báo trước</span></div>
+    </div>
+
+    <p class="reveal">Cơ thể không gửi hóa đơn bằng giấy. Nó vẫn cho bạn đi làm, vẫn cho bạn tăng ca, vẫn cho bạn thức đến một giờ sáng — cho đến một ngày, nó nói: <em>"Đủ rồi."</em> Khi ấy, cái giá phải trả không còn là một viên thuốc. Có thể là một phần cuộc đời.</p>
+
+    <p class="reveal">Nhìn quanh vòng bạn bè cùng năm sinh, tôi thấy điều đó rõ hơn bao giờ hết.</p>
+    <p class="reveal">Tuổi tác không đến trong một đêm. Nó đến bằng vòng eo rộng thêm một chút, vài sợi tóc bạc, và khuôn mặt không còn giữ được vẻ rạng rỡ của ngày xưa.</p>
+    <p class="reveal">Rồi một ngày gặp lại bạn cũ, câu đầu tiên không còn là "Lâu quá không gặp", mà là "Trông già đi nhiều nhỉ". Hai người cùng cười, như thể vừa thừa nhận với nhau một sự thật mà chẳng ai có thể né tránh.</p>
+    <p class="reveal">Nhưng già đi chỉ là phần nhìn thấy được. Phần không nhìn thấy mới nặng hơn.</p>
+    <p class="reveal">Có người đau dạ dày triền miên. Giờ tôi chả còn được rủ đi uống bia những lúc bất ngờ nữa — phải hỏi trước, phải chọn quán, phải canh giờ. Cái tự do bốc đồng của tuổi hai mươi, hóa ra cũng có hạn dùng.</p>
+    <p class="reveal">Có người trĩ nặng phải đi cắt. Chuyện tưởng chỉ của người già, hóa ra đang xảy ra với người cùng năm sinh với mình.</p>
+    <p class="reveal">Và đầu năm nay, nhóm bạn mất đi một người. Cũng sinh năm 1987. Cũng chưa đến bốn mươi.</p>
+    <p class="reveal">Chúng ta vẫn nghĩ mình còn trẻ. Trong khi cơ thể — và cuộc đời — đã lặng lẽ bước sang một chương khác.</p>
+
+    <hr class="rule">
+
+    <h2 class="reveal">Có lẽ, thành công cũng cần được định nghĩa lại</h2>
+    <div class="timeline reveal">
+      <div class="timeline-item"><span class="timeline-label">20 tuổi</span><span class="timeline-value">Thành công là được nhận vào công ty mơ ước</span></div>
+      <div class="timeline-item"><span class="timeline-label">30 tuổi</span><span class="timeline-value">Thành công là mua được căn nhà đầu tiên</span></div>
+      <div class="timeline-item"><span class="timeline-label">35 tuổi</span><span class="timeline-value">Thành công là có khoản tiết kiệm đủ để bớt lo lắng</span></div>
+      <div class="timeline-item"><span class="timeline-label">Gần 40</span><span class="timeline-value">Thành công là kết quả khám sức khỏe khiến mình mỉm cười, là còn đủ sức đưa con đi chơi cuối tuần, là cùng bố mẹ đại gia đình đi du lịch, ăn những bữa cơm đoàn viên mà không phải lo chính mình mới là người mệt trước</span></div>
+    </div>
+
+    <p class="pull reveal">Tài sản quý nhất của người sinh năm 1987 không phải là tiền. Đó là <span>mười năm khỏe mạnh</span> phía trước.</p>
+
+    <p class="reveal">Vì tiền có thể kiếm lại. Sự nghiệp có thể làm lại. Nhưng có những tế bào trong cơ thể, có những năm tháng của cha mẹ, có những ký ức tuổi thơ của con cái — nếu bỏ lỡ, sẽ không có lần thứ hai.</p>
+
+    <h2 class="reveal">Bắt đầu trả góp — từ hôm nay</h2>
+    <p class="reveal">Không cần trả một lúc. Không cần kỳ tích. Chỉ cần trả đều, mỗi ngày một ít — như mọi khoản góp khác trong đời:</p>
+
+    <div class="invoice reveal">
+      <div class="invoice-title">Kế hoạch trả góp sức khỏe — bắt đầu từ tuổi 39</div>
+      <div class="invoice-row"><span>Trả góp 1 — Giấc ngủ</span><span>Ngủ trước 23h30, 5 ngày/tuần</span></div>
+      <div class="invoice-row"><span>Trả góp 2 — Vận động</span><span>6.000 bước/ngày, không cần phòng gym</span></div>
+      <div class="invoice-row"><span>Trả góp 3 — Ăn uống</span><span>Bớt một bữa muộn, thêm một bữa đúng giờ</span></div>
+      <div class="invoice-row"><span>Trả góp 4 — Kiểm tra</span><span>Khám sức khỏe định kỳ, không đợi màu đỏ</span></div>
+      <div class="invoice-row"><span>Trả góp 5 — Gia đình</span><span>Một chuyến du lịch cùng bố mẹ, nhiều bữa cơm đoàn viên hơn</span></div>
+      <div class="invoice-total"><span>Kỳ hạn</span><span>Mỗi ngày — bắt đầu từ hôm nay</span></div>
+    </div>
+
+    <hr class="rule">
+
+    <p class="reveal">Và có lẽ, đó chính là lý do chúng ta cần nói về sức khỏe. Không phải vì sợ già. Mà vì còn quá nhiều điều đáng sống.</p>
+
+  </article>
+
+  <footer>
+    <p class="closer reveal">Để rồi một ngày nào đó, khi bước sang tuổi năm mươi, chúng ta có thể mỉm cười và nói với chính mình: "May mà mình đã bắt đầu từ tuổi ba mươi chín."</p>
+
+    <p class="pull reveal" style="margin:44px auto 8px;">"The body is your temple.<br>Keep it pure and clean for the soul to reside in."</p>
+    <p class="reveal" style="text-align:center;font-size:13px;color:var(--ink-soft);max-width:none;letter-spacing:0.04em;">— B.K.S. Iyengar</p>
+    <p class="reveal" style="text-align:center;font-size:14px;color:var(--ink-soft);max-width:none;">Tạm dịch: <em>Cơ thể là ngôi đền của bạn. Hãy giữ nó tinh khiết và sạch sẽ để linh hồn trú ngụ.</em></p>
+
+    <div class="signoff reveal">Tuổi 39 — và giai đoạn quan trọng nhất vừa bắt đầu</div>
+    <div class="signoff reveal" style="margin-top:14px;color:var(--brick);">© Mèo Đen</div>
+  </footer>
+
+</div>
+
+
+
+
+    <audio id="bgm" loop preload="auto">
+    <source src="Chopin-Nocturn.mp3" type="audio/mpeg">
+  </audio>
+  <div id="player">
+    <button id="playBtn" onclick="togglePlay()">▶</button>
+    <span>Nocturne Op.9 No.2 — Chopin</span>
+  </div>
+
+<script>
+  const audio = document.getElementById('bgm');
+  const btn = document.getElementById('playBtn');
+  let playing = false;
+  function togglePlay(){
+    if(playing){ audio.pause(); btn.textContent='▶'; playing=false; }
+    else { audio.play(); btn.textContent='⏸'; playing=true; }
+  }
+  window.addEventListener('load', ()=>{
+    audio.volume = 0.35;
+    audio.play().then(()=>{ btn.textContent='⏸'; playing=true; }).catch(()=>{});
+  });
+
+  const els = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); }
+    });
+  },{threshold:0.12});
+  els.forEach(el=>io.observe(el));
+
+  const themeBtn = document.getElementById('themeToggle');
+  function toggleTheme(){
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    themeBtn.textContent = isDark ? '🌙' : '☀️';
+  }
+</script>
+</body>
+</html>

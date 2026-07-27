@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0A1512">
+<title>Âm Thanh Của Nước</title>
+<meta name="description" content="Mỗi ngày, chúng ta đều tắm. Nhưng có bao giờ thật sự tắm? Một bài viết chậm về việc dừng lại, lắng nghe cơ thể, và trở về với chính mình trong mười phút mỗi ngày.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Be+Vietnam+Pro:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0A1512;
+    --bg-deep: #060D0B;
+    --text: #E4E9E3;
+    --muted: #7C9089;
+    --line: rgba(228, 233, 227, 0.12);
+    --gold: #B99A5B;
+    --gold-dim: rgba(185, 154, 91, 0.35);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  }
+
+  body {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    background: radial-gradient(ellipse at 50% 0%, var(--bg) 0%, var(--bg-deep) 100%);
+    color: var(--text);
+    line-height: 1.85;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ── HERO ── */
+  header.hero {
+    position: relative;
+    padding: 120px 0 70px;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .ripple-field {
+    position: absolute;
+    top: 44%;
+    left: 50%;
+    width: 640px;
+    height: 640px;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  .ripple-field span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: 1px solid var(--gold-dim);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: ripple-out 7s ease-out infinite;
+    opacity: 0;
+  }
+
+  .ripple-field span:nth-child(1) { width: 60px; height: 60px; animation-delay: 0s; }
+  .ripple-field span:nth-child(2) { width: 60px; height: 60px; animation-delay: 2.3s; }
+  .ripple-field span:nth-child(3) { width: 60px; height: 60px; animation-delay: 4.6s; }
+
+  @keyframes ripple-out {
+    0%   { width: 40px; height: 40px; opacity: 0; }
+    12%  { opacity: 0.55; }
+    100% { width: 560px; height: 560px; opacity: 0; }
+  }
+
+  .hero-eyebrow {
+    position: relative;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-weight: 300;
+    font-size: 0.72rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 28px;
+  }
+
+  h1 {
+    position: relative;
+    font-family: 'Crimson Pro', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(2.1rem, 7vw, 3.1rem);
+    line-height: 1.35;
+    color: var(--text);
+    max-width: 480px;
+    margin: 0 auto;
+    letter-spacing: 0.3px;
+  }
+
+  .hero-rule {
+    position: relative;
+    width: 1px;
+    height: 54px;
+    background: linear-gradient(var(--gold-dim), transparent);
+    margin: 44px auto 0;
+  }
+
+  /* ── ARTICLE ── */
+  article {
+    padding-bottom: 110px;
+  }
+
+  article p {
+    font-family: 'Crimson Pro', serif;
+    font-weight: 300;
+    font-size: 1.16rem;
+    color: var(--text);
+    margin-bottom: 27px;
+  }
+
+  article h2 {
+    font-family: 'Crimson Pro', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 1.36rem;
+    color: var(--gold);
+    margin: 70px 0 30px;
+    line-height: 1.5;
+    letter-spacing: 0.3px;
+  }
+
+  article h2:first-of-type { margin-top: 0; }
+
+  .lede p {
+    font-size: 1.2rem;
+  }
+
+  .question {
+    font-family: 'Crimson Pro', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 1.3rem;
+    color: var(--gold);
+    text-align: center;
+    margin: 54px 0;
+    padding: 32px 0;
+    letter-spacing: 0.4px;
+    border-top: 1px solid var(--gold-dim);
+    border-bottom: 1px solid var(--gold-dim);
+  }
+
+  .section-break {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 64px 0;
+  }
+
+  .section-break svg {
+    width: 34px;
+    height: 34px;
+    opacity: 0.6;
+  }
+
+  .section-break circle {
+    fill: none;
+    stroke: var(--gold);
+    stroke-width: 0.6;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 56px 0 90px;
+    border-top: 1px solid var(--line);
+  }
+
+  footer p {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-weight: 300;
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  footer .signature {
+    font-family: 'Crimson Pro', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--text);
+    margin-bottom: 20px;
+  }
+
+  footer .author {
+    font-size: 0.76rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 24px;
+  }
+
+  footer .copyright {
+    font-size: 0.7rem;
+    letter-spacing: 0.5px;
+    margin-top: 8px;
+    opacity: 0.6;
+  }
+
+  @media (max-width: 480px) {
+    header.hero { padding: 84px 0 50px; }
+    article p, .lede p { font-size: 1.06rem; }
+    article h2 { font-size: 1.22rem; margin: 56px 0 24px; }
+    .question { font-size: 1.14rem; }
+    .ripple-field { width: 420px; height: 420px; }
+  }
+
+  /* ── SCROLL REVEAL ── */
+  article p, article h2, .question {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 1.4s cubic-bezier(0.22, 1, 0.36, 1), transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  article p.visible, article h2.visible, .question.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── DẤU LẶNG: làm mờ xung quanh khi tới câu hỏi ── */
+  body.pause-mode article p:not(.question p),
+  body.pause-mode article h2 {
+    opacity: 0.2 !important;
+    transition: opacity 0.9s ease;
+  }
+  body.pause-mode .question {
+    opacity: 1 !important;
+  }
+
+  /* ── DỰ PHÒNG KHÔNG JS: hiện nội dung nếu JS không chạy ── */
+  .no-js article p, .no-js article h2, .no-js .question {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  /* ── NÚT NHẠC NỀN ── */
+  .music-toggle {
+    position: fixed;
+    bottom: 28px;
+    right: 24px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(10, 21, 18, 0.7);
+    backdrop-filter: blur(6px);
+    border: 1px solid var(--gold-dim);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 50;
+    transition: border-color 0.4s ease, transform 0.3s ease;
+  }
+
+  .music-toggle:hover { border-color: var(--gold); }
+  .music-toggle:active { transform: scale(0.94); }
+
+  .music-toggle svg {
+    width: 19px;
+    height: 19px;
+    stroke: var(--gold);
+    fill: none;
+    stroke-width: 1.4;
+  }
+
+  .music-toggle .icon-pause { display: none; }
+  .music-toggle.playing .icon-play { display: none; }
+  .music-toggle.playing .icon-pause { display: block; }
+
+  .music-toggle .icon-play {
+    fill: var(--gold);
+    stroke: none;
+  }
+
+  /* sóng âm nhỏ khi đang phát */
+  .music-toggle.playing::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 1px solid var(--gold-dim);
+    animation: music-pulse 2.4s ease-out infinite;
+  }
+
+  @keyframes music-pulse {
+    0%   { transform: scale(1); opacity: 0.6; }
+    100% { transform: scale(1.6); opacity: 0; }
+  }
+
+  @media (max-width: 480px) {
+    .music-toggle { bottom: 20px; right: 18px; width: 46px; height: 46px; }
+  }
+
+  @media print {
+    .music-toggle, .ripple-field { display: none !important; }
+  }
+</style>
+<noscript><style>
+  article p, article h2, .question { opacity: 1 !important; transform: none !important; }
+  .music-toggle { display: none !important; }
+</style></noscript>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="ripple-field"><span></span><span></span><span></span></div>
+    <div class="hero-eyebrow">Một khoảng lặng</div>
+    <h1>Âm Thanh<br>Của Nước</h1>
+    <div class="hero-rule"></div>
+  </header>
+
+  <article>
+
+    <div class="lede">
+      <p>Con người chúng ta tắm khoảng ba vạn lần trong đời.</p>
+
+      <p>Ba vạn lần nước chảy qua gáy.</p>
+
+      <p>Ba vạn lần bọt xà phòng tan đi.</p>
+    </div>
+
+    <div class="question">
+      Vậy mà có mấy lần bạn thật sự ở đó?
+    </div>
+
+    <p>Có lẽ, rất ít người trả lời được.</p>
+
+    <p>Chúng ta bước vào phòng tắm với chiếc đầu vẫn còn đầy những cuộc họp, những tin nhắn chưa trả lời, những dự định còn dang dở.</p>
+
+    <p>Nước chảy trên vai. Tay xoa xà phòng. Mắt nhìn vô định. Đầu óc thì ở một nơi khác.</p>
+
+    <p>Đến khi bước ra, cơ thể sạch hơn, nhưng tâm trí vẫn còn nguyên những bộn bề.</p>
+
+    <p>Đó không phải là tắm. Đó chỉ là làm sạch cơ thể.</p>
+
+    <div class="section-break">
+      <svg viewBox="0 0 34 34">
+        <circle cx="17" cy="17" r="3"></circle>
+        <circle cx="17" cy="17" r="9" opacity="0.55"></circle>
+        <circle cx="17" cy="17" r="15" opacity="0.25"></circle>
+      </svg>
+    </div>
+
+    <h2>Khi tắm mà không biết cơ thể đang nói gì</h2>
+
+    <p>Con người rất kỳ lạ.</p>
+
+    <p>Chúng ta có thể nhận ra chiếc xe vừa có một vết xước nhỏ. Có thể phát hiện chiếc điện thoại bị nứt một góc màn hình.</p>
+
+    <p>Nhưng nhiều người lại không biết trên chính cơ thể mình vừa xuất hiện một nốt ruồi mới, một vết bầm nhỏ, hay một vùng da đang thay đổi.</p>
+
+    <p>Lý do rất đơn giản — chúng ta nhìn cơ thể mỗi ngày, nhưng chưa bao giờ thật sự quan sát.</p>
+
+    <p>Một lần tắm đúng là cơ hội để kiểm tra chính mình. Đôi vai hôm nay có đang căng cứng? Lưng có đau hơn tuần trước? Da có gì khác lạ? Mái tóc có rụng nhiều hơn?</p>
+
+    <p>Đó đều là những tín hiệu mà cơ thể gửi đến. Tiếc rằng chúng ta thường bỏ lỡ.</p>
+
+    <h2>Tắm không chỉ để sạch</h2>
+
+    <p>Ngày xưa, khi chưa có vòi sen, việc tắm diễn ra chậm hơn. Người ta múc từng gáo nước. Rửa từng phần cơ thể. Không ai vội.</p>
+
+    <p>Ngày nay, mọi thứ nhanh hơn. Tắm cũng nhanh hơn. Chúng ta mang cả điện thoại vào phòng tắm. Bật nhạc. Xem video. Thậm chí trả lời tin nhắn.</p>
+
+    <p>Phòng tắm — nơi đáng lẽ yên tĩnh nhất trong ngôi nhà — lại trở thành nơi tiếp tục sự bận rộn.</p>
+
+    <p>Trong khi đó, đây có lẽ là khoảng thời gian hiếm hoi không ai cần bạn giải quyết vấn đề. Không ai giao việc. Không ai gọi tên. Không ai mong bạn phải làm hài lòng họ.</p>
+
+    <p>Chỉ còn tiếng nước. Và chính bạn.</p>
+
+    <p>Thử nhắm mắt một lúc, và chỉ nghe. Tiếng nước rơi trên vai, trên tóc, trên sàn. Tiếng thở của chính mình hòa vào đó. Không cần gọi tên nó là thiền định — chỉ cần biết, đó là một trong số ít khoảnh khắc trong ngày mà tai bạn không phải nghe ai nói, chỉ nghe một âm thanh duy nhất, lặp lại, đều đặn, không đòi hỏi gì ở bạn cả.</p>
+
+    <h2>Tắm vào lúc nào mới phù hợp?</h2>
+
+    <p>Có người tắm khi vừa thức dậy để tỉnh táo. Có người đợi đến tối mới xả hết bụi bặm của một ngày dài. Có người chỉ mất ba phút. Có người ngâm mình cả nửa giờ.</p>
+
+    <p>Không có một khung giờ đúng cho tất cả mọi người.</p>
+
+    <p>Người lao động ngoài trời cần tắm để loại bỏ mồ hôi và bụi bẩn sau khi làm việc. Người tập thể thao nên để cơ thể hạ nhiệt rồi mới tắm. Người làm văn phòng có thể chọn buổi tối như một cách khép lại ngày dài.</p>
+
+    <p>Điều quan trọng không phải là bảy giờ hay chín giờ. Điều quan trọng là đừng biến việc tắm thành một cuộc chạy đua.</p>
+
+    <p>Đừng vừa bước vào đã nghĩ đến việc phải bước ra thật nhanh.</p>
+
+    <p>Mười phút bình yên, đôi khi quý hơn mười phút lướt mạng xã hội.</p>
+
+    <h2>Một lần tắm đúng</h2>
+
+    <p>Hãy thử một lần.</p>
+
+    <p>Để điện thoại bên ngoài. Đừng mở video. Đừng nghe tin tức.</p>
+
+    <p>Mở nước vừa đủ ấm. Thở ra một hơi thật sâu. Đừng cố hít vào, cơ thể sẽ tự làm phần còn lại.</p>
+
+    <p>Đưa hai bàn tay hứng những giọt nước đầu tiên. Đừng vội dội từ đầu xuống. Hãy bắt đầu từ bàn chân, đi lên thật chậm.</p>
+
+    <p>Chưa cần xà phòng. Chỉ cần nước, bàn tay và hơi thở di chuyển trên da. Chạm như thể bạn đang gặp lại một người quen lâu ngày.</p>
+
+    <p>Khi đã ấm, hãy thoa xà phòng thật nhẹ. Xà phòng không diệt vi khuẩn, chỉ giúp chúng trôi đi. Nhẹ cũng đủ sạch, như quét lá trong sân.</p>
+
+    <p>Quan sát bàn tay, cánh tay, bờ vai, những vết sẹo cũ.</p>
+
+    <p>Để ý nhịp điệu lúc nhanh lúc chậm. Để buổi tắm thành một bản nhạc nhỏ.</p>
+
+    <p>Bạn sẽ ngạc nhiên. Chỉ một lần như vậy, tâm trí cũng nhẹ đi rất nhiều.</p>
+
+    <div class="section-break">
+      <svg viewBox="0 0 34 34">
+        <circle cx="17" cy="17" r="3"></circle>
+        <circle cx="17" cy="17" r="9" opacity="0.55"></circle>
+        <circle cx="17" cy="17" r="15" opacity="0.25"></circle>
+      </svg>
+    </div>
+
+    <h2>Một nghi thức nhỏ để yêu bản thân</h2>
+
+    <p>Chúng ta dành hàng giờ để chăm sóc điện thoại. Đưa xe đi bảo dưỡng đúng kỳ. Lau chùi bàn làm việc.</p>
+
+    <p>Nhưng lại hiếm khi dành mười phút chỉ để lắng nghe chính cơ thể mình.</p>
+
+    <p>Trong khi đó, cơ thể là ngôi nhà duy nhất chúng ta sẽ sống trong suốt cuộc đời. Nếu không chăm sóc nó, không ai có thể làm thay.</p>
+
+    <p>Có lẽ, giá trị lớn nhất của việc tắm không nằm ở việc sạch hơn. Mà là việc bạn cho phép mình dừng lại.</p>
+
+    <p>Mười phút không vội vàng. Mười phút không chạy theo ai. Mười phút để trở về với chính mình.</p>
+
+    <p>Ngày mai, khi bước vào phòng tắm, hãy thử làm một điều rất nhỏ.</p>
+
+    <p>Đừng chỉ tắm. Hãy thật sự hiện diện.</p>
+
+    <p>Biết đâu, giữa tiếng nước chảy đều ấy, bạn sẽ nghe thấy điều mà cơ thể mình đã âm thầm muốn nói từ rất lâu.</p>
+
+    <div class="question">Ngày mai, bạn có định thử không?</div>
+
+  </article>
+
+  <footer>
+    <p class="signature">Tắm, và sự hiện diện bị bỏ quên.</p>
+    <p>Một khoảng lặng nhỏ giữa những ngày bận rộn.</p>
+    <p class="author">Mèo Lười 1987</p>
+    <p class="copyright">© Dừa &amp; Mixue</p>
+  </footer>
+
+</div>
+
+<audio id="bgMusic" loop preload="none">
+  <source src="Beethoven-Moonlight-64kbps.mp3" type="audio/mpeg">
+</audio>
+
+<button id="musicToggle" class="music-toggle" type="button" aria-label="Bật nhạc nền" aria-pressed="false">
+  <svg class="icon-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+  <svg class="icon-pause" viewBox="0 0 24 24"><line x1="7" y1="5" x2="7" y2="19"></line><line x1="17" y1="5" x2="17" y2="19"></line></svg>
+</button>
+
+<script>
+  // Dự phòng: nếu trình duyệt không hỗ trợ IntersectionObserver, hiện toàn bộ nội dung ngay
+  if (!('IntersectionObserver' in window)) {
+    document.body.classList.add('no-js');
+  }
+
+  // Fade-in từng đoạn khi cuộn tới
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('article p, article h2, .question').forEach(el => {
+    revealObserver.observe(el);
+  });
+
+  // Nút nhạc nền
+  const music = document.getElementById('bgMusic');
+  const musicBtn = document.getElementById('musicToggle');
+
+  musicBtn.addEventListener('click', () => {
+    if (music.paused) {
+      music.play().catch(() => {});
+      musicBtn.classList.add('playing');
+      musicBtn.setAttribute('aria-pressed', 'true');
+      musicBtn.setAttribute('aria-label', 'Tắt nhạc nền');
+    } else {
+      music.pause();
+      musicBtn.classList.remove('playing');
+      musicBtn.setAttribute('aria-pressed', 'false');
+      musicBtn.setAttribute('aria-label', 'Bật nhạc nền');
+    }
+  });
+
+  // Dấu lặng: khi câu hỏi giữa bài xuất hiện, làm mờ phần còn lại một nhịp
+  const questionEls = document.querySelectorAll('.question');
+  const pauseObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        document.body.classList.add('pause-mode');
+        setTimeout(() => document.body.classList.remove('pause-mode'), 1400);
+      }
+    });
+  }, { threshold: 0.6 });
+
+  questionEls.forEach(el => pauseObserver.observe(el));
+</script>
+
+</body>
+</html>

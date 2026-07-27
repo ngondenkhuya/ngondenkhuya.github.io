@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trước Vua Hùng — Bằng chứng khảo cổ về người tiền sử Việt Nam</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,900&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F0EDE4; --bg-alt:#E8E3D5; --surface:#FBFAF6;
+    --text:#1E2019; --text-muted:#6B6558; --line:#D8D3C4;
+    --accent:#8C5A2B; --accent-2:#6E4423;
+    --teal:#2F5D62; --teal-bg:#EFF4F3; --mustard:#C9971E;
+    --invert-bg:#1E2019; --invert-text:#F0EDE4; --invert-muted:#C9C4B4;
+    color-scheme: light;
+  }
+  html[data-theme="dark"]{
+    --bg:#15161A; --bg-alt:#1B1D22; --surface:#20222A;
+    --text:#EDEAE0; --text-muted:#9A9488; --line:#33353D;
+    --accent:#D69A5C; --accent-2:#E8B37D;
+    --teal:#5AAFB5; --teal-bg:#1E2C2C; --mustard:#E3BC55;
+    --invert-bg:#0E0F12; --invert-text:#F0EDE4; --invert-muted:#B9B4A6;
+    color-scheme: dark;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{ background:var(--bg); color:var(--text); font-family:'Source Serif 4', serif; line-height:1.6; overflow-x:hidden; transition:background .35s, color .35s; }
+  .label{ font-family:'IBM Plex Mono', monospace; text-transform:uppercase; letter-spacing:.12em; font-size:.72rem; color:var(--accent); font-weight:600; }
+  .wrap{ max-width:920px; margin:0 auto; padding:0 28px; }
+
+  .progress{ position:fixed; top:0; left:0; height:3px; width:0%; background:var(--accent); z-index:999; transition:width .08s linear; }
+
+  .topnav{ position:sticky; top:0; z-index:100; background:color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); padding:14px 0; }
+  .topnav .wrap{ display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+  .brand{ font-family:'IBM Plex Mono', monospace; font-size:.78rem; letter-spacing:.08em; font-weight:600; white-space:nowrap; }
+  .brand span{ color:var(--accent); }
+  .navlinks{ display:flex; gap:16px; flex-wrap:wrap; font-family:'IBM Plex Mono', monospace; font-size:.66rem; letter-spacing:.05em; text-transform:uppercase; }
+  .navlinks a{ color:var(--text-muted); text-decoration:none; padding:4px 0; border-bottom:1px solid transparent; transition:color .2s, border-color .2s; }
+  .navlinks a:hover, .navlinks a.active{ color:var(--accent); border-color:var(--accent); }
+  .navtools{ display:flex; gap:8px; }
+  .navbtn{ font-family:'IBM Plex Mono', monospace; font-size:.66rem; background:transparent; border:1px solid var(--line); color:var(--text); padding:7px 11px; cursor:pointer; transition:all .2s; white-space:nowrap; }
+  .navbtn:hover{ background:var(--accent); border-color:var(--accent); color:#fff; }
+  .navbtn.playing{ background:var(--accent); border-color:var(--accent); color:#fff; }
+  .navbtn.playing span.note{ display:inline-block; animation:notePulse 1s ease-in-out infinite; }
+  @keyframes notePulse{ 0%,100%{ opacity:1; } 50%{ opacity:.4; } }
+  .toast{ position:fixed; bottom:24px; left:50%; transform:translateX(-50%) translateY(20px); background:var(--invert-bg); color:var(--invert-text); font-family:'IBM Plex Mono', monospace; font-size:.75rem; padding:10px 18px; opacity:0; pointer-events:none; transition:opacity .25s, transform .25s; z-index:998; }
+  .toast.show{ opacity:1; transform:translateX(-50%) translateY(0); }
+
+  .reveal{ opacity:0; transform:translateY(26px); transition:opacity .7s ease, transform .7s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  .hero{ position:relative; padding:80px 0 0; border-bottom:1px solid var(--line); overflow:hidden; }
+  .hero .wrap{ position:relative; z-index:2; }
+  .hero .label{ margin-bottom:16px; display:block; }
+  h1.hero-title{ font-family:'Fraunces', serif; font-weight:700; font-size:clamp(2.1rem,5.6vw,3.9rem); line-height:1.05; letter-spacing:-.01em; max-width:760px; }
+  h1.hero-title em{ font-style:italic; font-weight:400; color:var(--accent); }
+  .hero-sub{ margin-top:18px; font-size:1.02rem; color:var(--text-muted); max-width:580px; padding-bottom:44px; }
+  .timeline-track{ position:relative; width:100%; z-index:1; }
+  .timeline-track svg{ width:100%; height:auto; display:block; }
+  .tl-line{ fill:none; stroke:var(--line); stroke-width:2; }
+  .tl-line-draw{ fill:none; stroke:var(--accent); stroke-width:2; stroke-dasharray:1000; stroke-dashoffset:1000; animation:draw 2.4s ease-out forwards .3s; }
+  .tl-break{ stroke:var(--bg); stroke-width:14; stroke-linecap:round; }
+  .tl-break-mark{ stroke:var(--text-muted); stroke-width:1.6; opacity:.7; }
+  .tl-dot{ fill:var(--surface); stroke:var(--accent); stroke-width:2; opacity:0; animation:dotIn .4s ease-out forwards; }
+  .tl-dot.anchor{ fill:var(--accent); stroke:var(--accent); r:6; }
+  .tl-tick{ stroke:var(--line); stroke-width:1.4; opacity:0; animation:dotIn .4s ease-out forwards; }
+  .tl-label{ font-family:'IBM Plex Mono', monospace; font-size:11px; fill:var(--text-muted); opacity:0; animation:labelIn .5s ease-out forwards; }
+  .tl-label.anchor{ font-family:'Fraunces', serif; font-weight:700; font-size:13px; fill:var(--accent); font-style:italic; }
+  .tl-sub{ font-family:'IBM Plex Mono', monospace; font-size:9px; fill:var(--text-muted); opacity:.75; }
+  .tl-caption{ text-align:center; font-family:'IBM Plex Mono', monospace; font-size:.66rem; color:var(--text-muted); padding:2px 0 22px; }
+  @keyframes draw{ to{ stroke-dashoffset:0; } }
+  @keyframes dotIn{ to{ opacity:1; } }
+  @keyframes labelIn{ to{ opacity:1; } }
+
+  .story-open{ padding:38px 0 46px; border-bottom:1px solid var(--line); }
+  .story-text{ font-family:'Fraunces', serif; font-style:italic; font-weight:400; font-size:clamp(1rem,2vw,1.2rem); line-height:1.65; max-width:680px; }
+  .story-note{ margin-top:14px; font-family:'IBM Plex Mono', monospace; font-size:.66rem; color:var(--text-muted); }
+
+  section{ padding:60px 0; border-bottom:1px solid var(--line); }
+  section:last-of-type{ border-bottom:none; }
+  section.alt{ background:var(--bg-alt); }
+  .section-head{ margin-bottom:30px; }
+  h2.section-title{ font-family:'Fraunces', serif; font-weight:700; font-size:clamp(1.4rem,3vw,1.9rem); margin-top:6px; }
+  .section-intro{ max-width:640px; color:var(--text-muted); margin-top:10px; font-size:.96rem; }
+  .caveat-tag{ display:inline-block; margin-top:14px; font-family:'IBM Plex Mono', monospace; font-size:.66rem; color:var(--text-muted); border:1px dashed var(--line); padding:6px 12px; max-width:640px; line-height:1.5; }
+
+  .statbar{ background:var(--invert-bg); color:var(--invert-text); padding:40px 0; }
+  .stat-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+  .stat{ border-left:1px solid rgba(240,237,228,.25); padding-left:18px; }
+  .stat .num{ font-family:'Fraunces', serif; font-weight:700; font-size:2.2rem; line-height:1; }
+  .stat .cap{ margin-top:6px; font-size:.8rem; color:var(--invert-muted); }
+  .stat .src{ margin-top:5px; font-family:'IBM Plex Mono', monospace; font-size:.6rem; color:#8f8a7b; }
+
+  .agechart{ margin-top:20px; }
+  .age-row{ display:flex; align-items:center; gap:12px; margin-bottom:14px; }
+  .age-tag{ width:150px; flex:0 0 150px; font-family:'IBM Plex Mono', monospace; font-size:.7rem; color:var(--text-muted); }
+  .age-track{ flex:1; height:20px; background:var(--bg-alt); border:1px solid var(--line); position:relative; overflow:hidden; }
+  .age-fill{ position:absolute; left:0; top:0; bottom:0; width:0%; background:linear-gradient(90deg, var(--teal), var(--accent)); transition:width 1.2s cubic-bezier(.17,.67,.29,1); }
+  .age-val{ width:120px; flex:0 0 120px; text-align:right; font-family:'IBM Plex Mono', monospace; font-size:.72rem; color:var(--text); }
+
+  .mech-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:18px; }
+  .mech-card{ background:var(--surface); border:1px solid var(--line); padding:22px 20px; transition:transform .25s, box-shadow .25s, border-color .25s; }
+  .mech-card:hover{ transform:translateY(-5px); box-shadow:0 14px 26px -16px rgba(0,0,0,.35); border-color:var(--mustard); }
+  .mech-card .mech-num{ font-family:'IBM Plex Mono', monospace; color:var(--mustard); font-size:.72rem; letter-spacing:.06em; }
+  .mech-card h4{ font-family:'Fraunces', serif; font-size:1.02rem; font-weight:600; margin:8px 0 8px; }
+  .mech-card p{ font-size:.85rem; color:var(--text-muted); line-height:1.55; }
+
+  .tips{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+  .tip{ background:var(--surface); border:1px solid var(--line); padding:18px 15px; transition:transform .2s, box-shadow .2s; }
+  .tip:hover{ transform:translateY(-4px); box-shadow:0 12px 20px -14px rgba(0,0,0,.35); }
+  .tip .tnum{ font-family:'Fraunces', serif; font-weight:700; color:var(--accent); font-size:1.3rem; }
+  .tip p{ font-size:.82rem; margin-top:6px; color:var(--text); line-height:1.5; }
+  .tip p b{ font-family:'IBM Plex Mono', monospace; font-size:.68rem; display:block; margin-bottom:5px; color:var(--accent-2); }
+
+  .positive-box{ background:var(--teal-bg); border-left:4px solid var(--teal); padding:26px 30px; }
+  .positive-box .label{ color:var(--teal); }
+  .positive-box ul{ margin-top:14px; padding-left:18px; }
+  .positive-box li{ margin-bottom:7px; font-size:.92rem; }
+
+  table{ width:100%; border-collapse:collapse; margin-top:18px; font-size:.85rem; }
+  th,td{ text-align:left; padding:.5rem .6rem; border-bottom:1px solid var(--line); }
+  th{ font-family:'IBM Plex Mono', monospace; font-size:.68rem; text-transform:uppercase; color:var(--accent); }
+  td{ color:var(--text-muted); }
+
+  .sources-list{ display:grid; gap:12px; margin-top:10px; }
+  .source-item{ display:flex; justify-content:space-between; align-items:baseline; gap:16px; padding:12px 0; border-bottom:1px solid var(--line); flex-wrap:wrap; }
+  .source-item .sname{ font-size:.9rem; }
+  .source-item .stag{ font-family:'IBM Plex Mono', monospace; font-size:.68rem; color:var(--text-muted); }
+
+  footer{ padding:26px 0 50px; }
+  footer .disclaimer{ font-family:'IBM Plex Mono', monospace; font-size:.64rem; color:var(--text-muted); max-width:680px; line-height:1.7; }
+
+  @media (max-width:760px){
+    .stat-grid{ grid-template-columns:repeat(2,1fr); row-gap:24px; }
+    .mech-grid{ grid-template-columns:1fr; }
+    .tips{ grid-template-columns:1fr; }
+    .navlinks{ order:3; flex-basis:100%; overflow-x:auto; flex-wrap:nowrap; scrollbar-width:none; margin-top:8px; }
+    .navlinks::-webkit-scrollbar{ display:none; }
+    .age-tag{ width:96px; flex:0 0 96px; font-size:.62rem; }
+    .age-val{ width:90px; flex:0 0 90px; }
+  }
+  @media print{
+    .topnav,.progress,.toast{ display:none !important; }
+    .reveal{ opacity:1 !important; transform:none !important; }
+    .statbar{ background:#111 !important; color:#fff !important; -webkit-print-color-adjust:exact; }
+  }
+  @media (prefers-reduced-motion: reduce){ .tl-line{ animation:none; stroke-dashoffset:0; } .reveal{ transition:none; opacity:1; transform:none; } }
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+
+<nav class="topnav">
+  <div class="wrap">
+    <div class="brand">SỬ VIỆT · <span>CHƯƠNG I</span></div>
+    <div class="navlinks">
+      <a href="#nien-dai">Niên đại</a>
+      <a href="#dia-ly">Địa lý</a>
+      <a href="#chung-toc">Chủng tộc</a>
+      <a href="#van-hoa">Văn hóa</a>
+      <a href="#hien-vat">Hiện vật</a>
+      <a href="#nguon">Nguồn</a>
+    </div>
+    <div class="navtools">
+      <button class="navbtn" id="musicToggle">♪ Nhạc</button>
+      <button class="navbtn" id="darkToggle">🌙 Dark</button>
+      <button class="navbtn" id="printBtn">⎙ In / PDF</button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="label">Khảo cổ học tiền sử · Miền Bắc Việt Nam</span>
+    <h1 class="hero-title">Trước Vua Hùng: bằng chứng về <em>người tiền sử</em> trên đất Việt</h1>
+    <p class="hero-sub">Hàng trăm nghìn năm trước khi có nhà nước đầu tiên, đã có con người sinh sống
+    trên dải đất này. Đây là những gì khảo cổ học — chứ không phải truyền thuyết — cho ta biết chắc
+    chắn, và những gì vẫn còn để ngỏ.</p>
+  </div>
+  <div class="timeline-track">
+    <svg viewBox="0 0 920 160" preserveAspectRatio="xMidYMid meet">
+      <!-- base line (static, faint) -->
+      <path class="tl-line" d="M20,90 L235,90 M295,90 L900,90"/>
+      <!-- animated draw-in line -->
+      <path class="tl-line-draw" d="M20,90 L235,90 M295,90 L900,90"/>
+      <!-- scale-break symbol -->
+      <line class="tl-break-mark" x1="250" y1="80" x2="240" y2="100"/>
+      <line class="tl-break-mark" x1="270" y1="80" x2="260" y2="100"/>
+
+      <!-- A: Homo erectus -->
+      <line class="tl-tick" x1="50" y1="76" x2="50" y2="90" style="animation-delay:.9s"/>
+      <circle class="tl-dot" cx="50" cy="90" r="4" style="animation-delay:.9s"/>
+      <text class="tl-label" x="50" y="52" text-anchor="middle" style="animation-delay:1.0s">Homo erectus</text>
+      <text class="tl-sub" x="50" y="66" text-anchor="middle" style="animation-delay:1.0s">~500.000 năm trước · Lạng Sơn</text>
+
+      <!-- B: Hòa Bình -->
+      <line class="tl-tick" x1="190" y1="90" x2="190" y2="106" style="animation-delay:1.15s"/>
+      <circle class="tl-dot" cx="190" cy="90" r="4" style="animation-delay:1.15s"/>
+      <text class="tl-label" x="190" y="124" text-anchor="middle" style="animation-delay:1.25s">Văn hóa Hòa Bình</text>
+      <text class="tl-sub" x="190" y="138" text-anchor="middle" style="animation-delay:1.25s">~17.000 năm trước</text>
+
+      <!-- C: Phùng Nguyên -->
+      <line class="tl-tick" x1="380" y1="76" x2="380" y2="90" style="animation-delay:1.5s"/>
+      <circle class="tl-dot" cx="380" cy="90" r="4" style="animation-delay:1.5s"/>
+      <text class="tl-label" x="380" y="52" text-anchor="middle" style="animation-delay:1.6s">Phùng Nguyên</text>
+      <text class="tl-sub" x="380" y="66" text-anchor="middle" style="animation-delay:1.6s">~2000 TCN</text>
+
+      <!-- D: Đông Sơn -->
+      <line class="tl-tick" x1="530" y1="90" x2="530" y2="106" style="animation-delay:1.8s"/>
+      <circle class="tl-dot" cx="530" cy="90" r="4" style="animation-delay:1.8s"/>
+      <text class="tl-label" x="530" y="124" text-anchor="middle" style="animation-delay:1.9s">Văn hóa Đông Sơn</text>
+      <text class="tl-sub" x="530" y="138" text-anchor="middle" style="animation-delay:1.9s">~700 TCN</text>
+
+      <!-- E: Vua Hùng (anchor) -->
+      <line class="tl-tick" x1="690" y1="74" x2="690" y2="90" style="animation-delay:2.1s"/>
+      <circle class="tl-dot anchor" cx="690" cy="90" r="6" style="animation-delay:2.1s"/>
+      <text class="tl-label anchor" x="690" y="48" text-anchor="middle" style="animation-delay:2.2s">Vua Hùng</text>
+      <text class="tl-sub" x="690" y="64" text-anchor="middle" style="animation-delay:2.2s">Dựng nước Văn Lang (truyền thuyết)</text>
+
+      <!-- F: Hiện tại (anchor) -->
+      <line class="tl-tick" x1="880" y1="90" x2="880" y2="108" style="animation-delay:2.4s"/>
+      <circle class="tl-dot anchor" cx="880" cy="90" r="6" style="animation-delay:2.4s"/>
+      <text class="tl-label anchor" x="880" y="128" text-anchor="middle" style="animation-delay:2.5s">Hiện tại</text>
+      <text class="tl-sub" x="880" y="144" text-anchor="middle" style="animation-delay:2.5s">2026</text>
+    </svg>
+    <p class="tl-caption">Trục thời gian mang tính minh họa, có bẻ gãy tỉ lệ (⌀) giữa thời tiền sử sâu
+    và giai đoạn dựng nước để cả hai giai đoạn đều quan sát được rõ ràng — không phản ánh tỉ lệ thời
+    gian tuyệt đối.</p>
+  </div>
+</header>
+
+<section class="story-open">
+  <div class="wrap reveal">
+    <p class="story-text">Trong hang Thẩm Khuyên (Lạng Sơn), lớp trầm tích dày hàng mét chứa vài
+    chiếc răng hóa thạch — tất cả những gì còn lại của một nhóm người sống cách đây khoảng nửa triệu
+    năm. Không tên, không mộ táng, không câu chuyện. Chỉ có răng, và các nhà cổ nhân loại học phải
+    dựng lại phần còn lại từ đó.</p>
+    <p class="story-note">Mọi mốc niên đại trong bài đều là ước tính khoa học, có sai số và có thể
+    thay đổi khi có phát hiện mới — không phải các con số tuyệt đối.</p>
+  </div>
+</section>
+
+<section class="statbar">
+  <div class="wrap reveal">
+    <div class="stat-grid">
+      <div class="stat"><div class="num" data-value="2.5" data-suffix=" triệu năm">0</div>
+        <div class="cap">Chi Homo xuất hiện tại châu Phi</div><div class="src">ƯỚC TÍNH KHOA HỌC</div></div>
+      <div class="stat"><div class="num" data-value="300" data-suffix=" nghìn năm">0</div>
+        <div class="cap">Homo sapiens xuất hiện tại châu Phi</div><div class="src">ƯỚC TÍNH KHOA HỌC</div></div>
+      <div class="stat"><div class="num" data-value="500" data-suffix=" nghìn năm">0</div>
+        <div class="cap">Răng Homo erectus tại Lạng Sơn (cận trên)</div><div class="src">THẨM KHUYÊN – THẨM HAI</div></div>
+      <div class="stat"><div class="num" data-value="54" data-suffix="">0</div>
+        <div class="cap">Dân tộc được công nhận tại Việt Nam</div><div class="src">TỔNG CỤC THỐNG KÊ</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="nien-dai">
+  <div class="wrap reveal">
+    <div class="section-head">
+      <span class="label">01 · Trình tự thời gian</span>
+      <h2 class="section-title">Các nền văn hóa nối tiếp nhau</h2>
+      <p class="section-intro">Việt Nam sở hữu một chuỗi bằng chứng khảo cổ gần như liên tục từ đá cũ
+      đến sơ kỳ kim khí. Độ dài thanh dưới đây thể hiện tương đối khoảng thời gian tồn tại của mỗi
+      nền văn hóa, không theo tỉ lệ tuyệt đối.</p>
+    </div>
+    <div class="agechart">
+      <div class="age-row"><div class="age-tag">Sơn Vi</div><div class="age-track"><div class="age-fill" data-target="63"></div></div><div class="age-val">~30.000–11.000 TCN</div></div>
+      <div class="age-row"><div class="age-tag">Hòa Bình – Bắc Sơn</div><div class="age-track"><div class="age-fill" data-target="32"></div></div><div class="age-val">~17.000–7.500 TCN</div></div>
+      <div class="age-row"><div class="age-tag">Đa Bút</div><div class="age-track"><div class="age-fill" data-target="10"></div></div><div class="age-val">~6.000–5.000 TCN</div></div>
+      <div class="age-row"><div class="age-tag">Phùng Nguyên</div><div class="age-track"><div class="age-fill" data-target="5"></div></div><div class="age-val">~2000–1500 TCN</div></div>
+      <div class="age-row"><div class="age-tag">Đông Sơn</div><div class="age-track"><div class="age-fill" data-target="7"></div></div><div class="age-val">~700 TCN–100 SCN</div></div>
+    </div>
+    <p class="caveat-tag">⚠ Niên đại của di chỉ núi Đọ (công cụ đá ghè đẽo, Thanh Hóa) hiện chưa có
+    đồng thuận trong giới khảo cổ — một số nghiên cứu xếp vào giai đoạn muộn (~30.000–40.000 năm),
+    số khác cho rằng có thể cổ hơn đáng kể. Do đó di chỉ này không được đưa vào biểu đồ trên.</p>
+  </div>
+</section>
+
+<section id="dia-ly" class="alt">
+  <div class="wrap reveal">
+    <div class="section-head">
+      <span class="label">02 · Bối cảnh tự nhiên</span>
+      <h2 class="section-title">Vì sao dấu tích tập trung ở miền Bắc?</h2>
+      <p class="section-intro">Gần như toàn bộ di chỉ tiền sử quan trọng nhất — Sơn Vi, Hòa Bình, Bắc
+      Sơn, Phùng Nguyên, Đông Sơn — nằm trong bán kính chưa đầy 200km quanh đồng bằng sông Hồng. Đây
+      không phải ngẫu nhiên.</p>
+    </div>
+    <div class="mech-grid">
+      <div class="mech-card"><div class="mech-num">01</div><h4>Địa hình karst</h4>
+        <p>Hệ thống hang động đá vôi ở Lạng Sơn, Hòa Bình, Ninh Bình, Thanh Hóa có điều kiện pH và độ
+        ẩm ổn định, giúp xương và công cụ đá được bảo tồn qua hàng chục nghìn năm.</p></div>
+      <div class="mech-card"><div class="mech-num">02</div><h4>Sông lớn, phù sa</h4>
+        <p>Sông Hồng và sông Mã cung cấp đất phù sa màu mỡ — điều kiện thuận lợi cho bước chuyển từ
+        săn bắt–hái lượm sang nông nghiệp định cư.</p></div>
+      <div class="mech-card"><div class="mech-num">03</div><h4>3/4 diện tích là đồi núi</h4>
+        <p>Đồng bằng chỉ chiếm phần nhỏ diện tích nhưng tập trung dân cư đông nhất — mô hình cư trú
+        này được duy trì từ thời tiền sử đến hiện đại.</p></div>
+      <div class="mech-card"><div class="mech-num">04</div><h4>Khí hậu nhiệt đới gió mùa</h4>
+        <p>Chu kỳ mưa – khô rõ rệt định hình lịch canh tác lúa nước và có thể liên quan tới tín ngưỡng
+        thờ tự nhiên hình thành sớm.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="chung-toc">
+  <div class="wrap reveal">
+    <div class="section-head">
+      <span class="label">03 · Nhân chủng học & di truyền học</span>
+      <h2 class="section-title">Nhiều lớp dân cư, không phải một nguồn gốc duy nhất</h2>
+      <p class="section-intro">Dân cư miền Bắc Việt Nam hình thành qua nhiều đợt di cư chồng lấp lên
+      nhau, được xác nhận bởi cả nhân chủng học hình thái và giải trình tự DNA cổ đại.</p>
+    </div>
+    <div class="mech-grid">
+      <div class="mech-card"><div class="mech-num">LỚP 1</div><h4>Cư dân bản địa cổ</h4>
+        <p>Đặc điểm gần với nhóm Australo–Melanesian, liên quan tới cư dân văn hóa Hòa Bình.</p></div>
+      <div class="mech-card"><div class="mech-num">LỚP 2</div><h4>Di cư nông nghiệp Nam Á</h4>
+        <p>Từ ~4.000 năm trước, các nhóm nói ngôn ngữ Nam Á (Austroasiatic) mang kỹ thuật trồng lúa
+        lan tỏa xuống, hòa huyết với cư dân bản địa.</p></div>
+      <div class="mech-card"><div class="mech-num">LỚP 3</div><h4>Pha trộn Tày–Thái, Nam Đảo</h4>
+        <p>Xen kẽ cùng thời, để lại dấu ấn trong ngôn ngữ (thanh điệu) và thành phần dân cư miền
+        Trung, Tây Bắc.</p></div>
+      <div class="mech-card"><div class="mech-num">LỚP 4</div><h4>Bách Việt (Lạc Việt, Âu Việt)</h4>
+        <p>~2.500 năm trước, hòa quyện cùng cư dân bản địa hình thành cộng đồng Đông Sơn.</p></div>
+    </div>
+    <p class="caveat-tag">⚠ Các nghiên cứu DNA cổ đại (Lipson và cộng sự, 2018; McColl và cộng sự,
+    2018) chỉ có thể kết luận rằng một quần thể "có quan hệ di truyền gần" với các nhóm ngôn ngữ hiện
+    đại — đây là phát biểu thống kê sinh học, không phải bằng chứng về bản sắc dân tộc. Quy gán cư dân
+    Đông Sơn là "tổ tiên trực tiếp của người Việt hiện đại" là một khung diễn giải phổ biến nhưng
+    không phải kết luận trung lập của khoa học.</p>
+
+    <table>
+      <tr><th>Nhóm ngôn ngữ</th><th>Dân tộc tiêu biểu</th><th>Địa bàn chính</th></tr>
+      <tr><td>Việt – Mường</td><td>Kinh, Mường, Thổ, Chứt</td><td>Đồng bằng, đô thị</td></tr>
+      <tr><td>Tày – Thái</td><td>Tày, Thái, Nùng...</td><td>Đông Bắc, Tây Bắc</td></tr>
+      <tr><td>Môn – Khơ Me</td><td>Ba Na, Khmer...</td><td>Tây Nguyên, Nam Bộ</td></tr>
+      <tr><td>Nam Đảo</td><td>Chăm, Gia Rai, Ê Đê</td><td>Nam Trung Bộ, Tây Nguyên</td></tr>
+    </table>
+  </div>
+</section>
+
+<section id="van-hoa" class="alt">
+  <div class="wrap reveal">
+    <div class="section-head">
+      <span class="label">04 · Di sản văn hóa</span>
+      <h2 class="section-title">Những gì còn giữ lại đến hôm nay</h2>
+    </div>
+    <div class="positive-box">
+      <span class="label">Đặc trưng cốt lõi</span>
+      <ul>
+        <li><b>Văn minh lúa nước</b> — nền tảng kinh tế trung tâm, kéo theo lịch nông nghiệp và lễ hội cầu mùa.</li>
+        <li><b>Nhà sàn</b> — thích nghi khí hậu ẩm, được khắc họa trên hoa văn trống đồng Đông Sơn.</li>
+        <li><b>Vai trò của phụ nữ</b> — dấu vết mẫu hệ/bán mẫu hệ, tiền đề cho vai trò lãnh đạo của Hai Bà Trưng sau này.</li>
+        <li><b>Đúc đồng bản địa</b> — kỹ thuật luyện kim đạt trình độ cao, có sáng tạo riêng của cư dân Đông Sơn.</li>
+        <li><b>Thờ cúng tổ tiên</b> — từ tín ngưỡng vạn vật hữu linh, trở thành nét văn hóa bền vững nhất.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="hien-vat">
+  <div class="wrap reveal">
+    <div class="section-head">
+      <span class="label">05 · Bằng chứng vật chất</span>
+      <h2 class="section-title">Sáu hiện vật, sáu mảnh ghép</h2>
+      <p class="section-intro">Chưa có chữ viết trong suốt giai đoạn này — mọi hiểu biết đều đến từ
+      khảo cổ học.</p>
+    </div>
+    <div class="tips">
+      <div class="tip"><div class="tnum">01</div><p><b>Thẩm Hai – Thẩm Khuyên · Lạng Sơn</b>Răng hóa
+      thạch Homo erectus, ~400.000–500.000 năm — dấu tích người cổ xưa nhất được biết đến tại Việt Nam.</p></div>
+      <div class="tip"><div class="tnum">02</div><p><b>Núi Đọ · Thanh Hóa</b>~2.500 công cụ đá ghè đẽo;
+      niên đại chính xác còn tranh luận trong giới khảo cổ.</p></div>
+      <div class="tip"><div class="tnum">03</div><p><b>Hang Con Moong · Thanh Hóa</b>Địa tầng nối tiếp
+      Sơn Vi – Hòa Bình – Bắc Sơn; di tích quốc gia đặc biệt.</p></div>
+      <div class="tip"><div class="tnum">04</div><p><b>Hang Người Xưa · Ninh Bình</b>Ba bộ hài cốt
+      ~7.500 năm, chôn co bó kèm thổ hoàng — bằng chứng tín ngưỡng mai táng sớm.</p></div>
+      <div class="tip"><div class="tnum">05</div><p><b>Trống đồng Ngọc Lũ, Hoàng Hạ</b>Hiện vật tiêu
+      biểu của văn hóa Đông Sơn, trưng bày tại Bảo tàng Lịch sử Quốc gia, Hà Nội.</p></div>
+      <div class="tip"><div class="tnum">06</div><p><b>Di chỉ Mán Bạc · Ninh Bình</b>Mộ táng Phùng
+      Nguyên, nguồn dữ liệu DNA cổ quan trọng cho nghiên cứu nguồn gốc dân cư.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="nguon" class="alt">
+  <div class="wrap reveal">
+    <div class="section-head">
+      <span class="label">06 · Tài liệu tham khảo</span>
+      <h2 class="section-title">Nguồn</h2>
+    </div>
+    <div class="sources-list">
+      <div class="source-item"><span class="sname">Hà Văn Tấn (chủ biên), <i>Khảo cổ học Việt Nam</i></span><span class="stag">NXB KHXH</span></div>
+      <div class="source-item"><span class="sname">Matsumura & Hudson (2005), Dental perspectives on population history of SEA</span><span class="stag">AM. J. PHYS. ANTHROPOL.</span></div>
+      <div class="source-item"><span class="sname">McColl et al. (2018), The prehistoric peopling of Southeast Asia</span><span class="stag">SCIENCE 361</span></div>
+      <div class="source-item"><span class="sname">Lipson et al. (2018), Ancient genomes document multiple waves of migration</span><span class="stag">SCIENCE 361</span></div>
+      <div class="source-item"><span class="sname">Bảo tàng Lịch sử Quốc gia Việt Nam; Bảo tàng Nhân học (ĐHQGHN)</span><span class="stag">HIỆN VẬT</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p class="disclaimer">Bài viết tổng hợp mang tính giáo dục phổ thông, không thay thế tài liệu học
+    thuật chuyên ngành. Các mốc niên đại được trình bày kèm mức độ chắc chắn tương ứng; khi có phát
+    hiện khảo cổ mới, nội dung có thể cần cập nhật.</p>
+  </div>
+</footer>
+
+<audio id="bgAudio" src="Chopin-Nocturn.mp3" loop preload="none"></audio>
+<div class="toast" id="toast"></div>
+
+<script>
+  const progress = document.getElementById('progress');
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement;
+    const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+    progress.style.width = scrolled + '%';
+  });
+
+  const navLinks = document.querySelectorAll('.navlinks a');
+  const sectionMap = {};
+  navLinks.forEach(a => {
+    const id = a.getAttribute('href').slice(1);
+    const el = document.getElementById(id);
+    if(el) sectionMap[id] = a;
+  });
+  const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const link = sectionMap[entry.target.id];
+      if(!link) return;
+      if(entry.isIntersecting){
+        navLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-40% 0px -50% 0px' });
+  Object.keys(sectionMap).forEach(id => navObserver.observe(document.getElementById(id)));
+
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){ entry.target.classList.add('in'); revealObserver.unobserve(entry.target); }
+    });
+  }, { threshold:0.15 });
+  revealEls.forEach(el => revealObserver.observe(el));
+
+  function animateCount(el){
+    const target = parseFloat(el.getAttribute('data-value'));
+    const suffix = el.getAttribute('data-suffix') || '';
+    const duration = 1300;
+    const start = performance.now();
+    function tick(now){
+      const p = Math.min(1, (now - start) / duration);
+      const eased = 1 - Math.pow(1 - p, 3);
+      const val = (target < 10) ? (target*eased).toFixed(1) : Math.round(target*eased);
+      el.textContent = val + suffix;
+      if(p < 1) requestAnimationFrame(tick); else el.textContent = target + suffix;
+    }
+    requestAnimationFrame(tick);
+  }
+  const statEls = document.querySelectorAll('.stat .num[data-value]');
+  const statObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if(entry.isIntersecting){ animateCount(entry.target); statObserver.unobserve(entry.target); } });
+  }, { threshold:0.5 });
+  statEls.forEach(el => statObserver.observe(el));
+
+  const ageFills = document.querySelectorAll('.age-fill');
+  const ageObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if(entry.isIntersecting){ entry.target.style.width = entry.target.getAttribute('data-target') + '%'; ageObserver.unobserve(entry.target); } });
+  }, { threshold:0.4 });
+  ageFills.forEach(el => ageObserver.observe(el));
+
+  function showToast(msg){
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(showToast._timer);
+    showToast._timer = setTimeout(() => t.classList.remove('show'), 2600);
+  }
+
+  const bgAudio = document.getElementById('bgAudio');
+  const musicToggle = document.getElementById('musicToggle');
+  musicToggle.innerHTML = '<span class="note">♪</span> Nhạc';
+  musicToggle.addEventListener('click', () => {
+    if(bgAudio.paused){
+      bgAudio.play().then(() => {
+        musicToggle.classList.add('playing');
+        musicToggle.innerHTML = '<span class="note">♪</span> Đang phát';
+        showToast('Đang phát: Chopin — Nocturne');
+      }).catch(() => {
+        showToast('Không tìm thấy Chopin-Nocturn.mp3 — hãy đặt file này cùng thư mục với trang HTML');
+      });
+    } else {
+      bgAudio.pause();
+      musicToggle.classList.remove('playing');
+      musicToggle.innerHTML = '<span class="note">♪</span> Nhạc';
+    }
+  });
+
+  const darkToggle = document.getElementById('darkToggle');
+  darkToggle.addEventListener('click', () => {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    darkToggle.textContent = isDark ? '🌙 Dark' : '☀ Light';
+  });
+
+  document.getElementById('printBtn').addEventListener('click', () => window.print());
+</script>
+
+</body>
+</html>
