@@ -827,6 +827,9 @@ function renderShelf(){
     requestAnimationFrame(()=>leaf.classList.add('show'));
   });
 }
+/* Khi quay lại bằng nút Back (trang được phục hồi từ bfcache), trạng thái
+   "fading" (opacity:0) lúc rời trang vẫn còn nguyên — phải xoá lại. */
+window.addEventListener('pageshow', ()=>{ document.body.classList.remove('fading'); });
 function filterArticles(){ renderShelf(); }
 
 document.getElementById('copy-year').textContent = new Date().getFullYear();

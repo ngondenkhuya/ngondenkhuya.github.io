@@ -147,6 +147,14 @@
   }
   @media (prefers-reduced-motion: reduce){ .tl-line{ animation:none; stroke-dashoffset:0; } .reveal{ transition:none; opacity:1; transform:none; } }
 </style>
+<script>
+  (function(){
+    try{
+      var t = localStorage.getItem('bookroom-theme');
+      if(t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+    }catch(e){}
+  })();
+</script>
 </head>
 <body>
 
@@ -501,9 +509,12 @@
   });
 
   const darkToggle = document.getElementById('darkToggle');
+  darkToggle.textContent = document.documentElement.getAttribute('data-theme') === 'dark' ? '☀ Light' : '🌙 Dark';
   darkToggle.addEventListener('click', () => {
     const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    const next = isDark ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try{ localStorage.setItem('bookroom-theme', next); }catch(e){}
     darkToggle.textContent = isDark ? '🌙 Dark' : '☀ Light';
   });
 

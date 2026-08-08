@@ -492,6 +492,14 @@
 </style>
 </head>
 <body>
+<script>
+  (function(){
+    try{
+      var t = localStorage.getItem('bookroom-theme');
+      if(t === 'dark') document.body.classList.add('dark');
+    }catch(e){}
+  })();
+</script>
 <div class="toolbar">
   <button id="musicToggle" aria-label="Bật/tắt nhạc nền" title="Bật/tắt nhạc nền">♪</button>
   <button id="themeToggle" aria-label="Chuyển giao diện sáng/tối" title="Chuyển giao diện sáng/tối">◐</button>
@@ -694,22 +702,15 @@
 </main>
 
 <script>
-  // Theme toggle (dark mode) — resilient to localStorage being blocked (e.g. file:// in some browsers)
+  // Theme toggle (dark mode) — dùng chung key 'bookroom-theme' với toàn site
   const btn = document.getElementById('themeToggle');
   const body = document.body;
-  let stored = null;
-  try { stored = localStorage.getItem('tuvi-theme'); } catch (e) {}
-  let prefersDark = false;
-  try { prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches; } catch (e) {}
-  if (stored === 'dark' || (!stored && prefersDark)) {
-    body.classList.add('dark');
-    btn.textContent = '◑';
-  }
+  if (body.classList.contains('dark')) { btn.textContent = '◑'; }
   btn.addEventListener('click', () => {
     body.classList.toggle('dark');
     const isDark = body.classList.contains('dark');
     btn.textContent = isDark ? '◑' : '◐';
-    try { localStorage.setItem('tuvi-theme', isDark ? 'dark' : 'light'); } catch (e) {}
+    try { localStorage.setItem('bookroom-theme', isDark ? 'dark' : 'light'); } catch (e) {}
   });
 
   const musicBtn = document.getElementById('musicToggle');

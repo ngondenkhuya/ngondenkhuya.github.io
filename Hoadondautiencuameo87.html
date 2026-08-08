@@ -335,6 +335,14 @@
     .reveal{opacity:1;transform:none;}
   }
 </style>
+<script>
+  (function(){
+    try{
+      var t = localStorage.getItem('bookroom-theme');
+      if(t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+    }catch(e){}
+  })();
+</script>
 </head>
 <body>
 
@@ -488,9 +496,12 @@
   els.forEach(el=>io.observe(el));
 
   const themeBtn = document.getElementById('themeToggle');
+  themeBtn.textContent = document.documentElement.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙';
   function toggleTheme(){
     const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    const next = isDark ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try{ localStorage.setItem('bookroom-theme', next); }catch(e){}
     themeBtn.textContent = isDark ? '🌙' : '☀️';
   }
 </script>
