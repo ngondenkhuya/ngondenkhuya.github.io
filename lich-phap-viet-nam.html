@@ -725,6 +725,14 @@
 </head>
 <body>
 <script>
+  window.addEventListener('error', function(e){
+    var box = document.createElement('div');
+    box.style.cssText = 'position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#c0392b;color:#fff;font:12px/1.5 monospace;padding:10px 14px;white-space:pre-wrap;max-height:40vh;overflow:auto;';
+    box.textContent = 'LỖI JS: ' + e.message + '\n(dòng ' + e.lineno + ', cột ' + e.colno + ')\n' + (e.filename||'');
+    document.body.appendChild(box);
+  });
+</script>
+<script>
   (function(){
     try{
       var t = localStorage.getItem('bookroom-theme');
