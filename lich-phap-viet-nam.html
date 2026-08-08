@@ -725,14 +725,6 @@
 </head>
 <body>
 <script>
-  window.addEventListener('error', function(e){
-    var box = document.createElement('div');
-    box.style.cssText = 'position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#c0392b;color:#fff;font:12px/1.5 monospace;padding:10px 14px;white-space:pre-wrap;max-height:40vh;overflow:auto;';
-    box.textContent = 'LỖI JS: ' + e.message + '\n(dòng ' + e.lineno + ', cột ' + e.colno + ')\n' + (e.filename||'');
-    document.body.appendChild(box);
-  });
-</script>
-<script>
   (function(){
     try{
       var t = localStorage.getItem('bookroom-theme');
@@ -1167,14 +1159,14 @@
     const vnSide = document.getElementById('mVnSide');
     const cnSide = document.getElementById('mCnSide');
 
-    function fmt(mins){
+    const fmt = function(mins){
       let m = ((mins % 1440) + 1440) % 1440;
       const h = Math.floor(m/60);
       const mm = m % 60;
       return String(h).padStart(2,'0') + ':' + String(mm).padStart(2,'0');
-    }
+    };
 
-    function render(val){
+    const render = function(val){
       // val = minutes offset from VN midnight (00:00), range -60..+60 => 23:00..01:00
       const vnMinutes = val; // relative to VN midnight "today" (0)
       const cnMinutes = val + 60; // Beijing is UTC+8, one hour ahead
@@ -1200,7 +1192,7 @@
         noteEl.classList.remove('hot');
         noteEl.innerHTML = 'Ở khung giờ này, Việt Nam và Trung Quốc vẫn đang <strong>cùng một ngày dương lịch</strong> — chưa đủ tạo ra chênh lệch.';
       }
-    }
+    };
 
     render(parseInt(mSlider.value,10));
     mSlider.addEventListener('input', ()=> render(parseInt(mSlider.value,10)));
